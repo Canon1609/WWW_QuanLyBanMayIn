@@ -1,24 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./assets/base/reset.scss"
+import DashBoard from './pages/DashBoard';
+import './assets/base/base.scss'
+import AllRoutes from "./allroutes";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+        <AllRoutes/>
+    </>
+  
   );
 }
 
