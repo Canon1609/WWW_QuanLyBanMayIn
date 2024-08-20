@@ -1,0 +1,35 @@
+.header{
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+    &__logo{
+        width: 50%;
+    }
+    &__icon{
+        font-size: 24px;
+    }
+}
+.button{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    Button{
+        width: 100%;
+    }
+}
+.menu{
+    font-size: 16px;
+    color : #6B7280;
+    &__icon{
+        font-size: 16px;
+    }
+    &__item{
+        margin-top: 40px;
+    }
+}
+
+.ant-menu-item-selected {
+    font-weight: 700;
+  }
