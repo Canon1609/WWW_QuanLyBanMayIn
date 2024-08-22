@@ -19,7 +19,7 @@ function MenuSider(props){
         },
         {
        
-          label : "Options",
+          label : "Manage",
           key : 2,
           icon :<DashboardOutlined/>,
           children : [
