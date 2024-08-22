@@ -8,7 +8,6 @@ import { useState } from "react";
 import DropDownAvt from "../../components/DropdownAvt";
 function DashBoard() {
     const [collapsed , setCollapsed ] = useState(false);
-
     const toggle = () => {
         setCollapsed(!collapsed);
     }
