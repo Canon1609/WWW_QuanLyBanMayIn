@@ -8,7 +8,7 @@ function DropDownAvt() {
         {
             key: '1',
             label: (
-                <Link className="title" to={"/"}>DashBoard</Link>
+                <Link className="title" to={"/dashboard"}>DashBoard</Link>
             ),
             icon : <AppstoreOutlined />
         },
