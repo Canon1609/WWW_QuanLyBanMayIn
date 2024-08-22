@@ -5,9 +5,9 @@ import MenuSider from "../../components/MenuSider";
 import './dashboard.scss'
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
+import DropDownAvt from "../../components/DropdownAvt";
 function DashBoard() {
     const [collapsed , setCollapsed ] = useState(false);
-
     const toggle = () => {
         setCollapsed(!collapsed);
     }
@@ -20,11 +20,7 @@ function DashBoard() {
                 </Sider>
                 <Layout className="layout">
                     <header className="layout__header">
-                        <div className="layout__header-icon">
-                            <button className="btn">
-                                <span>A</span>
-                            </button>
-                        </div>
+                        <DropDownAvt/>
                     </header>
                     <Content className="content">
                         <Outlet></Outlet>
