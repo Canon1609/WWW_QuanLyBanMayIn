@@ -4,7 +4,10 @@ import "./menusider.scss"
 import logo from "../../assets/images/logo.png"
 import { FaPercent ,FaCircleUser , FaBox} from "react-icons/fa6"
 import {Button} from "antd"
-function MenuSider(){
+function MenuSider(props){
+  const {collapsed , toggle} = props;
+  console.log(collapsed);
+  
     const items = [
         {
        
@@ -59,8 +62,8 @@ function MenuSider(){
     return(
         <>
         <div className="header">
-             <img className="header__logo" src = {logo} ></img>
-             <div className="header__icon"><MenuFoldOutlined /></div>
+             <img className= "header__logo" src = { collapsed ? "" :  logo} ></img>
+             <div className="header__icon" onClick={toggle} ><MenuFoldOutlined  /></div>
         </div>
           <Menu
             className="menu"

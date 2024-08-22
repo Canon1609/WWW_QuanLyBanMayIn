@@ -3,6 +3,7 @@
     justify-content: space-between;
     display: flex;
     height: 100vh;
+    border-right: 1px solid #ddd;
 }
 .layout{
     background-color: #ddd;
@@ -11,9 +12,26 @@
     flex-direction: column;
     justify-content: center;
     &__header{
-        height: 80px;
-        background-color: aqua;
+        height: 50px;
+        padding: 10px;
+        background-color: #fff;
+        display: flex;
+        justify-content: end;
+        align-items: center;
     }
+    &__header-icon{
+        .btn{
+            background-color: green;
+            font-size: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        span{
+            color: #fff;
+        }
+    }
+ 
 }
 
 .content{
