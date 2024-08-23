@@ -18,6 +18,7 @@
         display: flex;
         justify-content: end;
         align-items: center;
+        border-bottom: 2px solid #ddd;
     }
     &__header-icon{
         .btn{
@@ -35,7 +36,7 @@
 }
 
 .content{
-    
+    background-color: #F9FAFB;
 }
 .footer{
   
