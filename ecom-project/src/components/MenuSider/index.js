@@ -1,12 +1,13 @@
 import { Image, Menu } from "antd"
-import {MenuOutlined , DashboardOutlined ,MenuFoldOutlined,AppstoreOutlined , ProductOutlined} from '@ant-design/icons'
+import {DashboardOutlined ,MenuFoldOutlined,AppstoreOutlined , ProductOutlined} from '@ant-design/icons'
 import "./menusider.scss"
 import logo from "../../assets/images/logo.png"
 import { FaPercent ,FaCircleUser , FaBox} from "react-icons/fa6"
 import {Button} from "antd"
+import { Link, useNavigate, useNavigation } from "react-router-dom"
 function MenuSider(props){
   const {collapsed , toggle} = props;
-  console.log(collapsed);
+  const navigator = useNavigate();
   
     const items = [
         {
@@ -59,12 +60,16 @@ function MenuSider(props){
   },
   
     ]
+    const handleClick = ()=>{
+        navigator("/dashboard")
+    }
     return(
         <>
         <div className="header">
-             <img className= "header__logo" src = { collapsed ? "" :  logo} ></img>
+            <img className= "header__logo" src = { collapsed ? "" :  logo} onClick={handleClick}></img>
              <div className="header__icon" onClick={toggle} ><MenuFoldOutlined  /></div>
         </div>
+
           <Menu
             className="menu"
             defaultSelectedKeys={"1"}

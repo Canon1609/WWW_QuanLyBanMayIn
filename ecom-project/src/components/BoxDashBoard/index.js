@@ -3,7 +3,7 @@ import "./BoxDashBoard.scss"
 function BoxDashBoard() {
     return (
         <>
-            <Row gutter={[16, 16]} >
+            <Row gutter={[16, 16]} justify={"space-around"} >
                 <Col xs={24} sm={12} md={8} lg={4} xl={4}>
                     <Card className="card"  bordered={false} >
                         <p className="card__header">Today Orders</p>
@@ -29,14 +29,10 @@ function BoxDashBoard() {
                     </Card>
                 </Col>
                 <Col xs={24} sm={12} md={8} lg={4} xl={4}>
-                    <Card className="card"  bordered={false} style={{backgroundColor : "#2882F0"}} >
-                        <p className="card__header">Today Orders</p>
+                    <Card className="card"  bordered={false} style={{backgroundColor : "#2882F0" , alignItems : "center" , fontWeight : "600" , display : "flex" , flexDirection : "column" , justifyContent : "space-between"  }} >
+                        <p className="card__header">This Month</p>
                         <p className="card__title">0.00 $</p>
-                        <div className="card__detail">
-                        <p className="card__detail--item">Cash: 1.00 $</p>
-                        <p className="card__detail--item">Card: 0.00 $</p>
-                        <p className="card__detail--item">Credit: 0.00 $</p>
-                        </div>
+                       
                     
                     </Card>
                 </Col>

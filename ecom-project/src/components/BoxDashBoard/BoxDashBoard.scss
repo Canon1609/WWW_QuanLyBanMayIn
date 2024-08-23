@@ -1,6 +1,7 @@
 .card{
     background-color: green;
     color: #fff ;
+    height: 225px;
     &__title{
         font-size: 22px;
         font-weight: 600;
@@ -15,9 +16,6 @@
         font-size: 22px;
     }
     &__detail{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-       
+       margin-top: 20px;
     }
 }
