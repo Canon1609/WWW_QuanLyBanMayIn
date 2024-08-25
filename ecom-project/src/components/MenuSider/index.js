@@ -12,7 +12,7 @@ function MenuSider(props){
     const items = [
         {
        
-            label : "Dashboard",
+            label : (<Link to={"/dashboard"}>DashBoard</Link>) ,
             key : "1",
             icon : <AppstoreOutlined className="menu__icon" />,
             children : "",
@@ -25,17 +25,17 @@ function MenuSider(props){
           icon :<DashboardOutlined/>,
           children : [
             {
-              label : "Products",
+              label : (<Link to={"/products"}>Products</Link>),
               key : 2.1,
               icon : <ProductOutlined />
             },
             {
-              label : "Category",
+              label : (<Link to={"/category"}>Category</Link>),
               key : 2.2,
               icon : <DashboardOutlined></DashboardOutlined>
             },
             {
-              label : "Coupons",
+              label : (<Link to={"/coupons"}>Coupons</Link>),
               key : 2.3,
               icon : <FaPercent />
             }
@@ -44,7 +44,7 @@ function MenuSider(props){
       },
       {
         
-        label : "Customer",
+        label : (<Link to={"/customer"}>Customer</Link>),
         key : 3,
         icon :<FaCircleUser />,
         children : "",
@@ -52,7 +52,7 @@ function MenuSider(props){
     },
     {
      
-      label : "Order",
+      label : (<Link to={"/order"}>Order</Link>),
       key : 4,
       icon :<FaBox />,
       children : "",
