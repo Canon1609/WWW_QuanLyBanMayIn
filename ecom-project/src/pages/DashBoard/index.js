@@ -25,12 +25,11 @@ function DashBoard() {
                     <Content className="content">
                         <Outlet></Outlet>
                     </Content>
-                    <footer className="footer">
+                    {/* <footer className="footer">
                         Footer
-                    </footer>
+                    </footer> */}
                 </Layout>
-            </Layout>
-        </>
+            </Layout>        </>
     )
 }
 export default DashBoard;
