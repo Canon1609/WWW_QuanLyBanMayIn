@@ -2,6 +2,7 @@ import { Col, Row } from "antd";
 import "./Admin.scss"
 import BoxDashBoard from "../../components/BoxDashBoard";
 import ShopDetailBox from "../../components/ShopDetailBox";
+import RecentOrder from "../../components/RecentOrder";
 function Admin(){
     return (
         <>
@@ -21,6 +22,12 @@ function Admin(){
                 <Row className="row" >
                     <Col span={24}>
                         <ShopDetailBox/>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col span = {24}>
+                        <RecentOrder/>
                     </Col>
                 </Row>
 
