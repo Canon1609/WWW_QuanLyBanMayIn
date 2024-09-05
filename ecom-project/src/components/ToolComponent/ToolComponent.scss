@@ -1,0 +1,22 @@
+.tool{
+    background-color: #ebebeb;
+    display: flex;
+    justify-content: space-between;
+    &__input{
+        width: 30%;
+        
+    }
+    &__category{
+        
+    }
+    &__price{
+       
+    }
+    &__filler{
+        width: 100px;
+       
+    }
+    &__reset{
+        width: 100px;
+    }
+}
