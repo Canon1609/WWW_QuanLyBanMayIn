@@ -1,0 +1,17 @@
+
+.product{
+    margin-top: 50px;
+    &__title{
+        font-size: 26px;
+        font-weight: 600;
+    }
+}
+.manage_btn{
+    display: flex;
+    justify-content: end;
+}
+.btn-add{
+    padding: 20px;
+    font-size: 20px;
+}
+

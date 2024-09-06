@@ -12,7 +12,10 @@ function MenuSider(props){
     const items = [
         {
        
-            label : (<Link to={"/dashboard"}>DashBoard</Link>) ,
+
+            label : (<Link to={"/dashboard"}>DashBoard</Link>),
+
+
             key : "1",
             icon : <AppstoreOutlined className="menu__icon" />,
             children : "",
@@ -73,6 +76,7 @@ function MenuSider(props){
           <Menu
             className="menu"
             defaultSelectedKeys={"1"}
+            defaultActiveFirst = {"1"}
             mode="inline"
             items = {items}
           >

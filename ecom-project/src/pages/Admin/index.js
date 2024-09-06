@@ -3,7 +3,11 @@ import "./Admin.scss"
 import BoxDashBoard from "../../components/BoxDashBoard";
 import ShopDetailBox from "../../components/ShopDetailBox";
 import RecentOrder from "../../components/RecentOrder";
+
 function Admin(){
+    
+ 
+        
     return (
         <>
             <div className="container">
