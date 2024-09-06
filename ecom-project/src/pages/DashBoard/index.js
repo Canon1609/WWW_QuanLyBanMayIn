@@ -14,11 +14,11 @@ function DashBoard() {
     return(
         <>
             <Layout className="layout">
-                <Sider width={"14%"} theme="light" className="sider" collapsed = {collapsed}  >
+                <Sider width={"14%"} theme="light" className="sider" collapsed = {collapsed} >
                     <MenuSider toggle = { toggle } collapsed = {collapsed} />
                     <Button className="button">Log out</Button>
                 </Sider>
-                <Layout className="layout">
+                <Layout >
                     <header className="layout__header">
                         <DropDownAvt/>
                     </header>
@@ -29,7 +29,8 @@ function DashBoard() {
                         Footer
                     </footer> */}
                 </Layout>
-            </Layout>        </>
+            </Layout>      
+         </>
     )
 }
 export default DashBoard;

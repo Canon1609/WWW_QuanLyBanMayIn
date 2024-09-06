@@ -1,0 +1,13 @@
+.title{
+    font-size: 30px;
+    font-weight: 600;
+}
+.search-area{
+    margin-top: 50px;
+    display: flex;
+    &__btn{
+        margin-right: 20px;
+        width: 20%;
+        height: 50px;
+    }
+}

@@ -2,28 +2,30 @@
     flex-direction: column;
     justify-content: space-between;
     display: flex;
-    height: 100vh;
     border-right: 1px solid #ddd;
 }
 .layout{
-    background-color: #ddd;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: #F9FAFB;
     &__header{
         height: 50px;
         padding: 10px;
-        background-color: #fff;
         display: flex;
         justify-content: end;
         align-items: center;
         border-bottom: 2px solid #ddd;
+        position: fixed;
+        top: 0;
+        width: calc(100% - 14%);
+        z-index: 9999;
     }
     &__header-icon{
         .btn{
             background-color: green;
-            font-size: 20px;
+            font-size: 24px;
             border-radius: 50%;
             margin-right: 50px;
             cursor: pointer;
@@ -34,9 +36,12 @@
     }
  
 }
-
 .content{
+    margin-top: 30px;
     background-color: #F9FAFB;
+    flex-grow: 1;  /* Đảm bảo content chiếm không gian còn lại */
+    overflow-y: auto;  /* Cho phép cuộn dọc */
+    padding: 20px;  /* Thêm khoảng cách nếu cần */
 }
 .footer{
   

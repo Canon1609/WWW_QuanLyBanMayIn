@@ -12,9 +12,6 @@ const Product = ()=> {
                             <h3 className="product__title">Products</h3>
                         </div>
                     </Col>
-                </Row>
-
-                <Row gutter={[20,20]}>
                     <Col span={24}>
                         <div className="manage_btn mt-10 pd-10">
                             <Button className="btn-add" htmlType="button" type="primary">
@@ -22,22 +19,15 @@ const Product = ()=> {
                             </Button>
                         </div>
                     </Col>
-                </Row>
-
-                <Row gutter={[20,20]}>
                     <Col span={24} >
-                            <ToolComponent/>
+                        <ToolComponent/>
+                    </Col>
+                    <Col span={24} >
+                        <TableProduct/>
                     </Col>
                 </Row>
-
-                <Row gutter={[20,20]}>
-                    <Col span={24} >
-                            <TableProduct/>
-                    </Col>
-                </Row>
-
-
             </div>
+          
         </>
     )
 }
