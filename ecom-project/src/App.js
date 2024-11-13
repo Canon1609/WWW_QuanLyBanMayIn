@@ -1,10 +1,14 @@
 import AllRoutes from "./allroutes";
+import { AuthProvider } from "./auth/AuthContext";
 function App() {
   return (
     <>
-        <AllRoutes/>
+      <AuthProvider>
+        <AllRoutes />
+      </AuthProvider>
+
     </>
-  
+
   );
 }
 
