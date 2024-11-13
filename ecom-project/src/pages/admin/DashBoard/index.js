@@ -1,11 +1,11 @@
 import {Button, Layout} from "antd"
 import { Content} from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
-import MenuSider from "../../components/MenuSider";
+import MenuSider from "../../../components/admin/MenuSider";
 import './dashboard.scss'
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
-import DropDownAvt from "../../components/DropdownAvt";
+import DropDownAvt from "../../../components/admin/DropdownAvt";
 function DashBoard() {
     const [collapsed , setCollapsed ] = useState(false);
     const toggle = () => {

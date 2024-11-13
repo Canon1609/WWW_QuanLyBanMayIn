@@ -1,6 +1,6 @@
 import { Button, Col, Input, Row } from "antd";
 import "./Category.scss"
-import ToolComponent from "../../components/ToolComponent";
+import ToolComponent from "../../../components/admin/ToolComponent";
 
 const Category = ()=>{
     return (

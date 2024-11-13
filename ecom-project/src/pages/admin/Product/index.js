@@ -1,7 +1,7 @@
 import "./Product.scss"
 import { Button, Col, Row } from "antd";
-import ToolComponent from "../../components/ToolComponent";
-import TableProduct from "../../components/TableProduct";
+import ToolComponent from "../../../components/admin/ToolComponent";
+import TableProduct from "../../../components/admin/TableProduct";
 const Product = ()=> {
     return (
         <>

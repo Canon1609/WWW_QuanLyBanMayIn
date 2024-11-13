@@ -1,8 +1,8 @@
 import { Col, Row } from "antd";
 import "./Admin.scss"
-import BoxDashBoard from "../../components/BoxDashBoard";
-import ShopDetailBox from "../../components/ShopDetailBox";
-import RecentOrder from "../../components/RecentOrder";
+import BoxDashBoard from "../../../components/admin/BoxDashBoard";
+import ShopDetailBox from "../../../components/admin/ShopDetailBox";
+import RecentOrder from "../../../components/admin/RecentOrder";
 
 function Admin(){
     

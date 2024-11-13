@@ -1,0 +1,13 @@
+.form{
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    border: 1px solid #ddd ;
+    &__title{
+        margin-top: 100px;
+        text-align: center;
+        font-size: 28px;
+        font-weight: 500;
+    }
+}

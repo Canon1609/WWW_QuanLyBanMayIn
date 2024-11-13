@@ -1,7 +1,7 @@
 import { Image, Menu } from "antd"
 import {DashboardOutlined ,MenuFoldOutlined,AppstoreOutlined , ProductOutlined} from '@ant-design/icons'
 import "./menusider.scss"
-import logo from "../../assets/images/logo.png"
+import logo from "../../../assets/images/logo.png"
 import { FaPercent ,FaCircleUser , FaBox} from "react-icons/fa6"
 import {Button} from "antd"
 import { Link, useNavigate, useNavigation } from "react-router-dom"
@@ -13,7 +13,7 @@ function MenuSider(props){
         {
        
 
-            label : (<Link to={"/dashboard"}>DashBoard</Link>),
+            label : (<Link to={"/admin/dashboard"}>DashBoard</Link>),
 
 
             key : "1",
@@ -28,17 +28,17 @@ function MenuSider(props){
           icon :<DashboardOutlined/>,
           children : [
             {
-              label : (<Link to={"/products"}>Products</Link>),
+              label : (<Link to={"/admin/products"}>Products</Link>),
               key : 2.1,
               icon : <ProductOutlined />
             },
             {
-              label : (<Link to={"/category"}>Category</Link>),
+              label : (<Link to={"/admin/category"}>Category</Link>),
               key : 2.2,
               icon : <DashboardOutlined></DashboardOutlined>
             },
             {
-              label : (<Link to={"/coupons"}>Coupons</Link>),
+              label : (<Link to={"admin/coupons"}>Coupons</Link>),
               key : 2.3,
               icon : <FaPercent />
             }
@@ -47,7 +47,7 @@ function MenuSider(props){
       },
       {
         
-        label : (<Link to={"/customer"}>Customer</Link>),
+        label : (<Link to={"/admin/customer"}>Customer</Link>),
         key : 3,
         icon :<FaCircleUser />,
         children : "",
@@ -55,7 +55,7 @@ function MenuSider(props){
     },
     {
      
-      label : (<Link to={"/order"}>Order</Link>),
+      label : (<Link to={"/admin/order"}>Order</Link>),
       key : 4,
       icon :<FaBox />,
       children : "",
@@ -64,7 +64,7 @@ function MenuSider(props){
   
     ]
     const handleClick = ()=>{
-        navigator("/dashboard")
+        navigator("/admin/dashboard")
     }
     return(
         <>

@@ -1,4 +1,4 @@
-import svg from "../../assets/images/404-DUm08_0T.svg"
+import svg from "../../../assets/images/404-DUm08_0T.svg"
 import {Button} from "antd"
 import "./404.scss"
 import { Link } from "react-router-dom";

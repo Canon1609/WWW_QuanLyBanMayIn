@@ -1,6 +1,6 @@
 import { Button, Input, Select } from "antd";
 import "./ToolComponent.scss"
-import "../../assets/base/base.scss"
+import "../../../assets/base/base.scss"
 
 const ToolComponent = ()=>{
     

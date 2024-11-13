@@ -1,0 +1,21 @@
+.userDropDown{
+    margin-top: 10px;
+    width:  250px;
+ 
+   :nth-child(1){
+    font-size: 16px;
+    font-weight: 500;
+    margin: 7px;
+   }
+}
+.useravt{
+    width: 30px;
+    height: 30px;
+    aspect-ratio: 4/3;
+    background-size: contain;
+    :first-child{
+        color: purple;
+        width: 100%;
+        height: 100%;
+    }
+}
