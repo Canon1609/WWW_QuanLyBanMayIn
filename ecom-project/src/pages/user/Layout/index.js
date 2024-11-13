@@ -1,11 +1,11 @@
 import { Layout } from "antd"
 import Headers from "../../../components/user/Header"
 import "../../../assets/base/base.scss"
-import { Outlet } from "react-router-dom"
+import { Outlet} from "react-router-dom"
 import "./Layout.scss"
 import Footers from "../../../components/user/Footer"
 import { useState } from "react"
-const {Header, Footer , Content} = Layout
+const {Header, Footer , Content } = Layout
 const Layouts = () => {
    
    return (
