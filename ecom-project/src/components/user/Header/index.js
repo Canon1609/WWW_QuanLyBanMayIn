@@ -9,13 +9,16 @@ import { useEffect, useState } from "react";
 import UserDropDown from "../UserDropDown";
 import { getCookie } from "../../../auth/cookie";
 import { useAuth } from "../../../auth/AuthContext";
+import Cart from "../../../pages/user/Cart";
 // import { useAuth } from "../../helper/AuthContext/AuthContext";
 const Headers = () => {
-     const {isAuth , userName , logout} = useAuth();
-   
+    const {isAuth , userName , logout} = useAuth();
+
+    useEffect(()=>{
     
+    },[])
     const navigate = useNavigate();
- 
+   
 
     return (
         <>
@@ -60,7 +63,7 @@ const Headers = () => {
                                 <>
                                     <div className="header-top__user">
                                      <UserDropDown userName = {userName} onLogout = {logout} />
-                                    <FaCartShopping style={{fontSize : 30 , color : 'purple'}} />
+                                            <Cart></Cart>   
                                     </div>
                                 </> ): 
                                 (

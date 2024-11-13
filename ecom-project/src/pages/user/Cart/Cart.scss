@@ -1,0 +1,45 @@
+/* Định dạng icon giỏ hàng */
+.fa-cart-shopping {
+    transition: transform 0.2s;
+}
+
+.fa-cart-shopping:hover {
+    transform: scale(1.1);
+    color: #1890ff;
+}
+
+.ant-badge-count {
+    font-size: 12px;
+    height: 20px;
+    min-width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+/* Tạo khoảng cách trong Drawer */
+.ant-drawer-body {
+    padding-top: 16px !important;
+    padding-bottom: 0 !important;
+}
+
+.ant-list-item {
+    transition: background-color 0.3s ease;
+}
+
+.ant-list-item:hover {
+    background-color: #fafafa;
+}
+
+/* Định dạng nút Checkout */
+.ant-btn-primary {
+    background-color: #1890ff;
+    border-color: #1890ff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.ant-btn-primary:hover {
+    background-color: #40a9ff;
+    border-color: #40a9ff;
+}
