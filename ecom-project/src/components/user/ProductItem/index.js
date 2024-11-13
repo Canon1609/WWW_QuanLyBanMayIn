@@ -41,39 +41,6 @@ const ProductItem = () => {
     const calTotal = ()=>{
         return cart.reduce((total,item)=> total + item.quantity * item.price , 0);
     }
-   // const apiKey = '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';
-   // const apiEndpoint = "https://api.openai.com/v1/chat/completions";
-    // const generateText = async (message) => {
-    //     try {
-    //         const response = await fetch(apiEndpoint,{
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 "Authorization": `Bearer ${apiKey}`
-    //             },
-    //             body: JSON.stringify({
-    //                 model: "gpt-4",
-    //                 messages: [{ role: "user", content: message }],
-    //                 max_tokens: 500,  // Số lượng token tối đa (tùy chỉnh theo nhu cầu)
-    //                 temperature: 0.7  // Hệ số nhiệt độ (điều chỉnh độ sáng tạo)
-    //             })
-    //         })
-    //         // Kiểm tra nếu phản hồi thành công
-    //         if (!response.ok) {
-    //             throw new Error(`Error: ${response.status}`);
-    //         }
-    //         const data = await response.json();
-    //         // Trích xuất và trả về nội dung của ChatGPT
-    //         return data.choices[0].message.content;
-    //     }
-    //     catch(error){
-    //         console.error("API fetch error:", error);
-    //         return "Có lỗi xảy ra khi kết nối với ChatGPT." ;
-    //     }
-     
-    // }
-
-
     useEffect(() => {
         //  call api lấy danh sách sản phẩm
         const productList = async () => {
@@ -88,10 +55,6 @@ const ProductItem = () => {
             }
         }
         productList();
-        // generateText("kế hoạch ôn tập toeic 450")
-        // .then(res=>{
-        //     console.log("Phản hồi từ GPT-4: "  ,res);
-        // })
     }, [])
     console.log(products);
     return (
