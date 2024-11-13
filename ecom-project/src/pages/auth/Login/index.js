@@ -4,8 +4,10 @@ import "./Login.scss"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { setCookie } from "../../../auth/cookie";
+import { useAuth } from "../../../auth/AuthContext";
 // import { useAuth } from "../../helper/AuthContext/AuthContext";
 const Login = () => {
+    const [isLogin , setIsLogin] = useState(true);
     const navigate = useNavigate();
     const [messageApi, contextHolder] = message.useMessage();
     const wellcome = (username) => {
@@ -23,8 +25,9 @@ const Login = () => {
             content: 'Tài khoản hoặc mật khẩu không chính xác !'
         })
     }
-    // const {login} = useAuth();
-    const [isUserLogin, setIsUserLogin] = useState(true);
+    // dùng login từ context
+    const {SetLogInState } = useAuth();
+
     // xử lý login
     const handleLogin = async (values) => {
         const { username, password } = values;
@@ -38,20 +41,25 @@ const Login = () => {
             })
             if (res.ok) {
                 const data = await res.json();    
+                console.log(data)
                 if(data.status === 200)
                 {
                     wellcome(username);
+                    setCookie('token' , data.token);
+                    setCookie('role' , data.role);
+                    setCookie('username' , data.username);
+                    localStorage.setItem('token' , data.token)
+                    SetLogInState(username , data.role)
                     setTimeout(()=>{
-                        // navigate("/" , login(data.username,data.token))
                         navigate("/")
                     },2500)      
                 }
-               else  
-               LoginFail();
-
+                else{
+                    LoginFail();
+                }
             }
             else {
-               LoginFail();
+           
             }
         } catch (error) {
             console.error("Login failed : " , error);
@@ -72,7 +80,7 @@ const Login = () => {
                     },
                 ]}
             />
-            {isUserLogin ? (<>
+            {isLogin ? (<>
                 <h2 className="form__title">LOGIN</h2>
                 <Form
                     className="form"
@@ -90,7 +98,7 @@ const Login = () => {
                         remember: true,
                     }}
                     onFinish={handleLogin}
-                    // onFinishFailed={onFinishFailed}
+                  
                     autoComplete="off"
                 >
 
@@ -171,7 +179,7 @@ const Login = () => {
                         remember: true,
                     }}
                     // onFinish={onFinish}
-                    // onFinishFailed={onFinishFailed}
+                    
                     autoComplete="off"
                 >
                     <Form.Item

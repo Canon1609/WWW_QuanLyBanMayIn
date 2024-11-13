@@ -7,21 +7,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 // import { getCookie } from "../../../auth/cookie"; 
 import UserDropDown from "../UserDropDown";
+import { getCookie } from "../../../auth/cookie";
+import { useAuth } from "../../../auth/AuthContext";
 // import { useAuth } from "../../helper/AuthContext/AuthContext";
 const Headers = () => {
-    //  const {isAuth , userName , logout} = useAuth();
-    const [isAuth , setIsAuth] = useState(true);
-    const [userName , setUserName] = useState('Huy');
-
+     const {isAuth , userName , logout} = useAuth();
+   
+    
     const navigate = useNavigate();
-    useEffect(()=>{
-      
-    },[])
+ 
 
-    const handleLogout = ()=>{
-        // logout();
-        navigate("/");
-    }
     return (
         <>
             <div className="header-top-side">
@@ -61,10 +56,10 @@ const Headers = () => {
                             <div className="header-top__search">
                                 <SearchBar />
                             </div>
-                                {isAuth === true ?  (                              
+                                {isAuth ?  (                              
                                 <>
                                     <div className="header-top__user">
-                                     <UserDropDown userName = {userName} onLogout = {handleLogout} />
+                                     <UserDropDown userName = {userName} onLogout = {logout} />
                                     <FaCartShopping style={{fontSize : 30 , color : 'purple'}} />
                                     </div>
                                 </> ): 

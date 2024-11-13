@@ -4,7 +4,7 @@ import "./UserDropDown.scss"
 import { FaLocationDot, FaCircleUser, FaCartShopping } from "react-icons/fa6";
 import { Link, Navigate, useNavigation } from "react-router-dom";
 const UserDropDown = ({userName , onLogout}) => {
-
+    
     const items = [
         {
             key: 1,
