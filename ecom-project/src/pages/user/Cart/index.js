@@ -2,31 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Drawer, Button, List, Typography, Divider, InputNumber, Image, Badge } from 'antd';
 import { FaCartShopping } from 'react-icons/fa6';
 import './Cart.scss'; // Đảm bảo bạn có file CSS để chỉnh sửa thêm
+import { useCart } from '../../../service/CartContext';
 
 const Cart = () => {
     const [visible, setVisible] = useState(false);
- 
-    const [cartItems, setCartItems] = useState([]);
+    const {cartItems , setCartItems , addToCart , updateQuantity , removeFromCart , getTotalPrice} = useCart()
     
-    useEffect(()=>{
-        const LocalStoreCart = localStorage.getItem('cart');
-        if(LocalStoreCart){
-            setCartItems(JSON.parse(LocalStoreCart))
-        }
-    },[])
-    // // Tính tổng giá
-    const getTotalPrice = () => {
-        return cartItems.reduce((total, item) => total + item.quantity * item.price, 0);
-    };
+  
 
-    // Cập nhật số lượng sản phẩm
-    const updateQuantity = (id, quantity) => {
-        setCartItems((prevItems) =>
-            prevItems.map((item) =>
-                item.id === id ? { ...item, quantity } : item
-            )
-        );
-    };
 
     // Hiển thị Drawer
     const showDrawer = () => {
@@ -72,7 +55,7 @@ const Cart = () => {
                                     <Typography.Text strong>{item.name}</Typography.Text>
                                     <br />
                                     <Typography.Text type="secondary" style={{ fontSize: '14px' }}>
-                                        ${item.price} / item
+                                        ${item.price}
                                     </Typography.Text>
                                 </div>
 
@@ -97,7 +80,7 @@ const Cart = () => {
                 <Divider />
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '16px', fontWeight: 'bold' }}>
                     <Typography.Text>Total Price:</Typography.Text>
-                    <Typography.Text>${getTotalPrice()}</Typography.Text>
+                    <Typography.Text>${getTotalPrice().toFixed(2)}</Typography.Text>
                 </div>
             </Drawer>
         </>

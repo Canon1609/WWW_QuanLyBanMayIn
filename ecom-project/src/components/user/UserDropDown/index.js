@@ -3,8 +3,15 @@ import { icons } from "antd/es/image/PreviewGroup";
 import "./UserDropDown.scss"
 import { FaLocationDot, FaCircleUser, FaCartShopping } from "react-icons/fa6";
 import { Link, Navigate, useNavigation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useCart } from "../../../service/CartContext";
 const UserDropDown = ({userName , onLogout}) => {
+  
+    const {cartItems} = useCart();
+    useEffect(()=>{
     
+    },[])
+ 
     const items = [
         {
             key: 1,
