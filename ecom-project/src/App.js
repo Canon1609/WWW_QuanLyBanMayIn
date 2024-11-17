@@ -1,11 +1,17 @@
 import AllRoutes from "./allroutes";
 import { AuthProvider } from "./auth/AuthContext";
+import { CartProvider } from "./service/CartContext";
 function App() {
   return (
     <>
-      <AuthProvider>
+   
+        <CartProvider>
+        <AuthProvider>
         <AllRoutes />
-      </AuthProvider>
+        </AuthProvider>
+        </CartProvider>
+       
+    
 
     </>
 

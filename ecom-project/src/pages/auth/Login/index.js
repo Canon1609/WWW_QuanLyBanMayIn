@@ -19,10 +19,25 @@ const Login = () => {
             }
         )
     }
+    const wellcomereg = (username) => {
+        messageApi.open(
+            {
+                contentBg : '#ffffff',
+                type: 'success',
+                content: `Chào mừng đến với website của chúng tôi , ${username} vui lòng đăng nhập để mua sắm !`
+            }
+        )
+    }
     const LoginFail = () => {
         messageApi.open({
             type: 'warning',
             content: 'Tài khoản hoặc mật khẩu không chính xác !'
+        })
+    }
+    const Regfail = () => {
+        messageApi.open({
+            type: 'warning',
+            content: 'Email đã tồn tại , vui lòng chọn email khác !'
         })
     }
     // dùng login từ context
@@ -49,9 +64,17 @@ const Login = () => {
                     setCookie('role' , data.role);
                     setCookie('username' , data.username);
                     localStorage.setItem('token' , data.token)
+                    localStorage.setItem('role' , data.role)
                     SetLogInState(username , data.role)
                     setTimeout(()=>{
-                        navigate("/")
+                        if(data.role === "admin"){
+                            navigate("/admin/dashboard")
+                        }
+                        else 
+                        {
+                            navigate("/")
+                        }
+                       
                     },2500)      
                 }
                 else{
@@ -66,6 +89,33 @@ const Login = () => {
             LoginFail();
         }
        
+    }
+    const onRegis = async (value)=>{
+            const { username , email , password} = value;
+            try {
+                const res = await fetch('http://localhost:8080/BE_PRINTER/api/v1/user/signup',{
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password , email})
+                })
+
+                if(res.ok){
+                    const data = await res.json();
+                    console.log(data);
+                     if(data.status === 201){
+                        wellcomereg(username);
+                        setIsLogin(true);
+                        setTimeout(()=>{
+                            navigate("/login")
+                        },2500) 
+                     }
+                  
+                }
+            } catch (error) {
+                console.error("Login failed : " , error);
+            }
     }
     return (
         <>
@@ -157,7 +207,13 @@ const Login = () => {
                             offset: 8,
                             span: 16,
                         }}>
-                        <p>If you don't have account <a href=""> Register </a> </p>
+                        <p>If you don't have account    <a
+                                    href="/register"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setIsLogin(false);
+                                    }}
+                                >Register</a> </p>
                     </Form.Item>
                 </Form>
 
@@ -178,7 +234,7 @@ const Login = () => {
                     initialValues={{
                         remember: true,
                     }}
-                    // onFinish={onFinish}
+                    onFinish={onRegis}
                     
                     autoComplete="off"
                 >
@@ -205,7 +261,7 @@ const Login = () => {
                             },
                         ]}
                     >
-                        <Input.Password />
+                        <Input />
                     </Form.Item>
 
                     <Form.Item
@@ -238,7 +294,13 @@ const Login = () => {
                             offset: 8,
                             span: 16,
                         }}>
-                        <p>If you have account <a href="#" >Sign In</a> </p>
+                        <p>If you have account <a
+                                    href="/login"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setIsLogin(true);
+                                    }}
+                                >Sign In</a> </p>
                     </Form.Item>
                 </Form>
             </>)}

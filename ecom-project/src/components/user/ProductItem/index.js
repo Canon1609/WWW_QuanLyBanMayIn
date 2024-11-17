@@ -3,44 +3,10 @@ import thumbnail from "../../../assets/images/thumbnail.jpg"
 import "./ProductItem.scss"
 import { useEffect, useState } from "react"
 import OpenAI from "openai";
+import { useCart } from "../../../service/CartContext";
 const ProductItem = () => {
     const [products, setProducts] = useState([]);
-    // tạo giỏ hàng từ localStore nếu có
-    const [cart , setCart] = useState(()=>{
-        const localCart = localStorage.getItem('cart');
-        return localCart ? JSON.parse(localCart) : [];
-    })
-    // hàm để lưu giỏ hàng vào localStorage
-    const saveCartToStorage = (cartData)=>{
-        localStorage.setItem('cart',JSON.stringify(cartData));
-    }
-    // hàm thêm sản phẩm vào giỏ hàng
-    const addToCart = (product)=>{
-        // kiểm tra sản phẩm đã có trong giỏ hàng chưa
-        const exisProduct = cart.some(item=>item.id === product.id);
-        if(exisProduct){
-            // nếu có tăng số lượng sản phẩm
-            const updateCart = cart.map(item=>item.id ===product.id ? {...item , quantity : item.quantity + 1} : item);
-            setCart(updateCart)
-            saveCartToStorage(updateCart)
-        }
-        else{
-            // nếu chưa có thêm sản phẩm mới
-            const updateCart = [...cart , {...product , quantity : 1}];
-            setCart(updateCart)
-            saveCartToStorage(updateCart)
-        }
-    }
-    // xóa sản phẩm khỏi giỏ hàng
-    const removeFromCart = (productId) =>{
-        const updateCart = cart.filter(item => item.id !== productId);
-        setCart(updateCart)
-        saveCartToStorage(updateCart);
-    }
-    // hàm tính tổng tiền trong giỏ hàng
-    const calTotal = ()=>{
-        return cart.reduce((total,item)=> total + item.quantity * item.price , 0);
-    }
+    const {cartItems , setCartItems , addToCart , updateQuantity , removeFromCart , getTotalPrice} = useCart()
     useEffect(() => {
         //  call api lấy danh sách sản phẩm
         const productList = async () => {
@@ -56,10 +22,10 @@ const ProductItem = () => {
         }
         productList();
     }, [])
-    console.log(products);
+    const limitProducts = products.slice(0,6);
     return (
         <>
-            {products.map((item) => {
+            {limitProducts.map((item) => {
                 return (
                     <div className="product-item">
                         <div className="product-item__img">

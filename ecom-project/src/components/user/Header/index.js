@@ -13,10 +13,7 @@ import Cart from "../../../pages/user/Cart";
 // import { useAuth } from "../../helper/AuthContext/AuthContext";
 const Headers = () => {
     const {isAuth , userName , logout} = useAuth();
-
-    useEffect(()=>{
-    
-    },[])
+  
     const navigate = useNavigate();
    
 
