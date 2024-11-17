@@ -64,9 +64,17 @@ const Login = () => {
                     setCookie('role' , data.role);
                     setCookie('username' , data.username);
                     localStorage.setItem('token' , data.token)
+                    localStorage.setItem('role' , data.role)
                     SetLogInState(username , data.role)
                     setTimeout(()=>{
-                        navigate("/")
+                        if(data.role === "admin"){
+                            navigate("/admin/dashboard")
+                        }
+                        else 
+                        {
+                            navigate("/")
+                        }
+                       
                     },2500)      
                 }
                 else{
