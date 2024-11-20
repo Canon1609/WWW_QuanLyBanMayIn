@@ -1,6 +1,7 @@
 import { Button, Col, Input, Row } from "antd";
 import "./Category.scss"
 import ToolComponent from "../../../components/admin/ToolComponent";
+import TableCategory from "../../../components/admin/Table/TableCategory";
 
 const Category = ()=>{
     return (
@@ -21,7 +22,7 @@ const Category = ()=>{
 
                 <Row>
                     <Col span={24}>
-                        
+                        <TableCategory/>
                     </Col>
                 </Row>
            </div>
