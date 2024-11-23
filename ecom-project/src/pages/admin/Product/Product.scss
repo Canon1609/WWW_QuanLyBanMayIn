@@ -1,6 +1,8 @@
 
 .product{
-    margin-top: 50px;
+    // margin-top: 50px;
+    display: flex;
+    justify-content: center;
     &__title{
         font-size: 26px;
         font-weight: 600;

@@ -3,11 +3,9 @@ import Headers from "../../../components/user/Header"
 import "../../../assets/base/base.scss"
 import { Outlet} from "react-router-dom"
 import "./Layout.scss"
-import Footers from "../../../components/user/Footer"
-import { useState } from "react"
-const {Header, Footer , Content } = Layout
-const Layouts = () => {
-   
+import Footers from "../../../components/Footer"
+const {Content } = Layout
+const Layouts = () => {  
    return (
     <>
         <Layout className="layout-main">
@@ -19,9 +17,9 @@ const Layouts = () => {
                 <Outlet/>
             </Content>
             </div>
-            <footer className="footer">
-                <Footers/>
-            </footer>
+            <div className="footer">
+              <Footers/>
+            </div>
           
         </Layout>
     </>

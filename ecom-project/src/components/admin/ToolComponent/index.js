@@ -1,6 +1,7 @@
-import { Button, Input, Select } from "antd";
+import { Button, Input, Select, Table } from "antd";
 import "./ToolComponent.scss"
 import "../../../assets/base/base.scss"
+import TableCategory from "../Table/TableCategory";
 
 const ToolComponent = ()=>{
     
@@ -50,6 +51,7 @@ const ToolComponent = ()=>{
           className="tool__price"></Select>
           <Button type="primary" className="tool__filler">Filler</Button>
           <Button type="primary" className="tool__reset">Reset</Button>
+        
            </div>
         
           

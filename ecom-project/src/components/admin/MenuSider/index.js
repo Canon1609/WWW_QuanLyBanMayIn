@@ -57,7 +57,7 @@ function MenuSider(props){
      
       label : (<Link to={"/admin/order"}>Order</Link>),
       key : 4,
-      icon :<FaBox />,
+      icon :<FaBox/>,
       children : "",
 
   },
@@ -69,8 +69,10 @@ function MenuSider(props){
     return(
         <>
         <div className="header">
-            <img className= "header__logo" src = { collapsed ? "" :  logo} onClick={handleClick}></img>
-             <div className="header__icon" onClick={toggle} ><MenuFoldOutlined  /></div>
+            <div className="header__logo"> {collapsed ? (<></>):(<img src={logo} alt="logo"></img>)} </div>
+            {collapsed? (   <div onClick={toggle} className="header__icon center" ><MenuFoldOutlined/></div>):(<div onClick={toggle} className="header__icon" ><MenuFoldOutlined/></div>)}
+          
+            
         </div>
 
           <Menu

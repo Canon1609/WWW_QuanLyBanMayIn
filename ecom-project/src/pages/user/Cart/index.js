@@ -3,12 +3,14 @@ import { Drawer, Button, List, Typography, Divider, InputNumber, Image, Badge } 
 import { FaCartShopping } from 'react-icons/fa6';
 import './Cart.scss'; // Đảm bảo bạn có file CSS để chỉnh sửa thêm
 import { useCart } from '../../../service/CartContext';
+import { calc } from 'antd/es/theme/internal';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
     const [visible, setVisible] = useState(false);
-    const {cartItems , setCartItems , addToCart , updateQuantity , removeFromCart , getTotalPrice} = useCart()
-    
-  
+    const { cartItems, setCartItems, addToCart, updateQuantity, removeFromCart, getTotalPrice } = useCart()
+    const navigate = useNavigate();
+
 
 
     // Hiển thị Drawer
@@ -20,7 +22,11 @@ const Cart = () => {
     const onClose = () => {
         setVisible(false);
     };
-
+    // hàm xử lý khi người dùng nhấn checkout
+    const handleCheckout = () => {
+        setVisible(false);
+        navigate('/checkout');
+    }
     return (
         <>
             {/* Icon giỏ hàng với hiệu ứng badge */}
@@ -36,9 +42,12 @@ const Cart = () => {
                 visible={visible}
                 width={400}
                 footer={
-                    <Button type="primary" block>
-                        Checkout
-                    </Button>
+                    <div style={{display : 'flex' , justifyContent : 'center' }}>
+                        <Button type="primary" block style={{ width: 200, padding: 20 }} onClick={handleCheckout}>
+                            Checkout
+                        </Button>
+                    </div>
+
                 }
             >
                 {/* Danh sách sản phẩm */}
@@ -48,7 +57,10 @@ const Cart = () => {
                         <List.Item style={{ padding: '12px 0', borderBottom: '1px solid #f0f0f0' }}>
                             <div style={{ display: 'flex', width: '100%' }}>
                                 {/* Hình ảnh sản phẩm */}
-                                <Image src={item.image} width={80} height={80} style={{ borderRadius: 8, marginRight: 16 }} />
+                                <div style={{ width: 150, height: 100, aspectRatio: 1 }}>
+                                    <Image preview={false} style={{ width: '100%', height: '100%', objectFit: 'contain' }} src={"https://huyyyy.sirv.com/Images/D%C3%B2ng%20m%C3%A1y%20in%20ph%C3%B9%20h%E1%BB%A3p%20cho%20gi%E1%BA%A5y%20in%20%E1%BA%A3nh%201(1).jpg"} width={80} height={80} />
+
+                                </div>
 
                                 {/* Thông tin sản phẩm */}
                                 <div style={{ flex: 1 }}>

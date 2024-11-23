@@ -1,6 +1,6 @@
 import { Spin, Table } from "antd";
 import "./TableProduct.scss"
-import { DeleteOutlined, ExclamationCircleFilled, FileSearchOutlined } from "@ant-design/icons"
+import { DeleteOutlined, ExclamationCircleFilled} from "@ant-design/icons"
 import { FaEdit } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Modal } from 'antd'
@@ -13,27 +13,28 @@ const TableProduct = () => {
     const [selectedProduct , setSelectedProduct] = useState(null);
 
     useEffect(() => {
-        const fetchProduct = async () => {
-            try {
-                const response = await fetch('http://localhost:8080/BE_PRINTER/api/v1/products');
-                if (response.ok) {
-                    const result = await response.json();
-                    setData(result.data || [])
-                }
-                else {
-                    setData('');
-                }
-            } catch (error) {
-                console.error(error)
-            }
-            finally {
-                setLoading(false)
-            }
-        }
+       
         fetchProduct();
     }, []);
-    console.log(data);
-    
+    const fetchProduct = async () => {
+        try {
+            const response = await fetch('http://localhost:8080/BE_PRINTER/api/v1/products');
+            if (response.ok) {
+                const result = await response.json();
+                console.log(result);
+                
+                setData(result.data || [])
+            }
+            else {
+                setData('');
+            }
+        } catch (error) {
+            console.error(error)
+        }
+        finally {
+            setLoading(false)
+        }
+    }
     const showDeleteConfirm = (id) => {
         confirm({
             title: 'Bạn có chắc chắn muốn xóa sản phẩm này??',
@@ -42,7 +43,7 @@ const TableProduct = () => {
             onOk: async () => {
                 // callapi xóa
                 try {
-                    const response = await fetch(`http://localhost:8080/BE_PRINTER/api/v1/products/delete/${id}`, {
+                    const response = await fetch(`http://localhost:8080/BE_PRINTER/api/v1/products/${id}`, {
                         method: "DELETE"
                     })
                     if (!response.ok) {
@@ -65,8 +66,9 @@ const TableProduct = () => {
 
             },
             onCancel() {
-                console.log('Cancel');
+              
             },
+        
         });
     };
     const handleEdit = (id)=>{
@@ -126,9 +128,9 @@ const TableProduct = () => {
                         <Table columns={columns} dataSource={data}
                             className="table"
                             pagination={{
-                                position: ["topRight"]
+                                position: ["center"]
                             }}
-                            scroll={{ y: 500 }}
+                            scroll={{ y: 400 }}
                             rowKey="id"
                         >
                         </Table>
@@ -137,7 +139,7 @@ const TableProduct = () => {
 
                   
                 )}
-      <EditForm product={selectedProduct} onClose={handleOnClose} visible={visible}  />
+      <EditForm product={selectedProduct} onClose={handleOnClose} visible={visible} onSuccess = {fetchProduct} />
         </>
     )
 }

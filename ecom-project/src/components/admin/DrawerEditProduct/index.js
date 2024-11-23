@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Drawer, Form, Input,Modal,Row, Select, Space } from 'antd';
 const { Option } = Select;
-const EditForm = ({ product , onClose , visible  }) => {
+const EditForm = ({ product , onClose , visible , onSuccess  }) => {
   const [form] = Form.useForm();  
   useEffect(()=>{
     if(product){
@@ -12,7 +12,6 @@ const EditForm = ({ product , onClose , visible  }) => {
   const handleSubmit = async () => {
     try {
       const values = await form.validateFields();
-      console.log(values.img)
       const response = await fetch(`http://localhost:8080/BE_PRINTER/api/v1/products/${values.id}`,{
         method : 'PUT',
         headers: {
@@ -36,8 +35,10 @@ const EditForm = ({ product , onClose , visible  }) => {
         const result = await response.json();
         console.log(result);
         Modal.success({
-          content: "CẬp nhật sản phẩm thành công!",
+          content: "Cập nhật sản phẩm thành công!",
       });
+      onSuccess(); // Gọi hàm onSuccess để reload lại dữ liệu
+      
       }
       onClose(); // Đóng Drawer sau khi submit
     } catch (error) {
