@@ -40,7 +40,7 @@ const Footers = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2024 Your Company Name. All Rights Reserved.</p>
+        <p>&copy; 2024 Printer Shop. All Rights Reserved.</p>
         <div className="payment-icons">
           <FaCcVisa aria-label="Visa" />
           <FaCcMastercard aria-label="Mastercard" />

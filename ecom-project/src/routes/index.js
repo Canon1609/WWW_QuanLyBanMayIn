@@ -9,6 +9,8 @@ import PrivateRoute from "../pages/auth/PrivateRoute/privateroute";
 import Layouts from "../pages/user/Layout";
 import Home from "../pages/user/Home";
 import Login from "../pages/auth/Login";
+import ProductDetail from "../components/user/ProductDetail";
+import Checkout from "../pages/checkout";
 export const routes = [
     {
         path : "/admin",
@@ -62,8 +64,16 @@ export const routes = [
                 element : <Home/>
             },
             {
+                path : `product/:id`,
+                element : <ProductDetail/>
+            },
+            {
                 path : "login",
                 element : <Login/>
+            },
+            {
+                path : 'checkout',
+                element : <Checkout></Checkout>
             }
         ]
     }

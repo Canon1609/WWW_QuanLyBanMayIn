@@ -10,6 +10,7 @@ import UserDropDown from "../UserDropDown";
 import { getCookie } from "../../../auth/cookie";
 import { useAuth } from "../../../auth/AuthContext";
 import Cart from "../../../pages/user/Cart";
+import Home from "../../../pages/user/Home";
 // import { useAuth } from "../../helper/AuthContext/AuthContext";
 const Headers = () => {
     const {isAuth , userName , logout} = useAuth();
@@ -84,11 +85,21 @@ const Headers = () => {
                                 <Menu mode="horizontal">
                                     <Menu.Item>
                                     </Menu.Item>
-                                    <Menu.Item>Home</Menu.Item>
-                                    <Menu.Item>Shop</Menu.Item>
-                                    <Menu.Item>Filler</Menu.Item>
-                                    <Menu.Item>Blog</Menu.Item>
-                                    <Menu.Item>Contact</Menu.Item>
+                                    <Menu.Item>
+                                        <Link to="/">Home</Link>
+                                    </Menu.Item>
+                                    <Menu.Item>
+                                        <Link to= "/shop">Shop</Link>
+                                    </Menu.Item>
+                                    <Menu.Item>
+                                        <Link to="/Filler">Filler</Link>
+                                    </Menu.Item>
+                                    <Menu.Item>
+                                        <Link to="/blog">Blog</Link>
+                                    </Menu.Item>
+                                    <Menu.Item>
+                                        <Link to="/contact">Contact</Link>
+                                    </Menu.Item>
                                 </Menu>
                             </div>
                             <div className="header-menu__right"></div>
