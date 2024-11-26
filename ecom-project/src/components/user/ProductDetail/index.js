@@ -4,7 +4,7 @@ import { Image, Rate, Tabs, Button, InputNumber } from "antd";
 import { useCart } from "../../../service/CartContext";
 import "./ProductDetail.scss";
 import { FaCartPlus } from "react-icons/fa6";
-
+import { formatCurrency } from "../../../helper/convertMoney";
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -40,14 +40,14 @@ const ProductDetail = () => {
     <div className="product-detail-page">
         <div className="product-detail" >
             <div className="product-detail__image">
-                <Image src= " https://huyyyy.sirv.com/Images/D%C3%B2ng%20m%C3%A1y%20in%20ph%C3%B9%20h%E1%BB%A3p%20cho%20gi%E1%BA%A5y%20in%20%E1%BA%A3nh%201(1).jpg" preview = {false} />
+                <Image src= "https://huyyyy.sirv.com/Images/D%C3%B2ng%20m%C3%A1y%20in%20ph%C3%B9%20h%E1%BB%A3p%20cho%20gi%E1%BA%A5y%20in%20%E1%BA%A3nh%201(1).jpg" preview = {false} />
             </div>
             <div className="product-detail__info">
                 <h1>Máy in HP 3d siêu nhanh 2024 </h1>
                 {/* <Rate disabled defaultValue= {5} /> */}
                 <p> Size Page : {product.sizePage}</p>
                 <p className="product-detail__info-ram"> Ram : {product.ram} MB</p>
-                <p  className="product-detail__info-price" >{product.price} VND </p>
+                <p  className="product-detail__info-price" > {formatCurrency(product.price)}</p>
                 <p >In stock: {product.inStock}</p>
                 <p>{product.description}</p>
                 <div className="product-detail__quantity">

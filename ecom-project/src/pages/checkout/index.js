@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Form, Input, Button, Select, DatePicker, message, Row, Col, Card, List, Checkbox, Typography } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { CartProvider, useCart } from '../../service/CartContext';
 
 const { Title, Text } = Typography;
 
 const CheckoutPage = () => {
   const [loading, setLoading] = useState(false);
-
-  const [cartItems, setCartItems] = useState(
-    JSON.parse(localStorage.getItem('cart')) || []
-  );
+  const { cartItems, setCartItems } =  useCart();
+ 
   const userName = JSON.parse(localStorage.getItem('userName')) || '';
 
   const [isChecked, setIsChecked] = useState(false); // State to manage the checkbox
@@ -27,6 +26,7 @@ const CheckoutPage = () => {
           const result = await response.json();
           message.success('Order placed successfully!');
           navigate('/');
+          setCartItems([]);
           setLoading(false)
         }
        
