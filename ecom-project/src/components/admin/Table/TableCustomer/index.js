@@ -68,7 +68,7 @@ const TableCustomer = () => {
         if (response.ok) {
             const result = await response.json();
             setData(result || []);
-            localStorage.setItem('users', JSON.stringify(result));
+            // localStorage.setItem('users', JSON.stringify(result));
         }
         setLoading(false);
     }
