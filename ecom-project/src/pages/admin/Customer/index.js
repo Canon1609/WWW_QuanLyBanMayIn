@@ -104,7 +104,7 @@ const Customer = () => {
                             <Input value={search} onChange={(e) => setSearch(e.target.value)} allowClear={true} style={{ width: "50%", marginRight: "25px", height: "50px" }} onFocus={()=>setIsSearch(true)}
                           
                             placeholder="Search by user name , email , ..."></Input>
-                            <Button type="primary" className="search-area__btn" onClick={handleSearch} >Fillter</Button>
+                            <Button type="primary" className="search-area__btn" onClick={handleSearch} >Tìm kiếm</Button>
                             <Button type="primary" className="search-area__btn" onClick={handleReset}>Reset</Button>
                             <Button className="btn-add" htmlType="button" type="primary" style={{ width: '20%', height: '50px' }} onClick={handleClick}  >Add Customer</Button>
                             <AddCustomerForm visible={visible} onClose={handleOnClose} />

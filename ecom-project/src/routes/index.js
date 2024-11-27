@@ -12,6 +12,7 @@ import Login from "../pages/auth/Login";
 import ProductDetail from "../components/user/ProductDetail";
 import Checkout from "../pages/checkout";
 import Customer from "../pages/admin/Customer";
+import Order from "../pages/admin/Order";
 export const routes = [
     {
         path : "/admin",
@@ -38,6 +39,12 @@ export const routes = [
                 path : "/admin/customer",
                 element: (
                     <PrivateRoute rolesAllowed={["admin"]} element={<Customer />} />
+                ),
+            },
+            {
+                path : "/admin/order",
+                element: (
+                    <PrivateRoute rolesAllowed={["admin"]} element={<Order />} />
                 ),
             },
             {
