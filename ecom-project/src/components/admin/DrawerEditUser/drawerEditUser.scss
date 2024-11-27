@@ -1,0 +1,80 @@
+/* Global styles for the form */
+.ant-drawer {
+    font-family: 'Roboto', sans-serif;
+}
+
+.ant-drawer-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+.ant-form-item-label > label {
+    font-weight: 500;
+    font-size: 14px;
+    color: #555;
+}
+
+.ant-form-item {
+    margin-bottom: 16px;
+}
+
+.ant-input {
+    border-radius: 8px;
+    border: 1px solid #d9d9d9;
+    padding: 8px 12px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.ant-input:focus {
+    border-color: #4096ff;
+    box-shadow: 0 0 8px rgba(64, 150, 255, 0.2);
+}
+
+.ant-btn-primary {
+    background-color: #4096ff;
+    border-color: #4096ff;
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 6px 20px;
+    transition: all 0.3s ease;
+}
+
+.ant-btn-primary:hover {
+    background-color: #1d78e6;
+    border-color: #1d78e6;
+}
+
+.ant-btn {
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 6px 20px;
+}
+
+.ant-space {
+    justify-content: center;
+}
+
+/* Custom spacing for rows and columns */
+.ant-row {
+    margin-bottom: 12px;
+}
+
+.ant-col {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* Drawer Body Customization */
+.ant-drawer-body {
+    background-color: #f9f9f9;
+    padding: 20px 24px;
+    border-radius: 8px;
+}
+
+input[type="hidden"] {
+    display: none;
+}

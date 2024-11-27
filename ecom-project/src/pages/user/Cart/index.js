@@ -10,7 +10,7 @@ const Cart = () => {
     const [visible, setVisible] = useState(false);
     const { cartItems, setCartItems, addToCart, updateQuantity, removeFromCart, getTotalPrice } = useCart()
     const navigate = useNavigate();
-
+    const products = JSON.parse(localStorage.getItem('products')) || [];
 
 
     // Hiển thị Drawer
@@ -53,7 +53,8 @@ const Cart = () => {
                 {/* Danh sách sản phẩm */}
                 <List
                     dataSource={cartItems}
-                    renderItem={(item) => (
+                    
+                    renderItem={(item) => (        
                         <List.Item style={{ padding: '12px 0', borderBottom: '1px solid #f0f0f0' }}>
                             <div style={{ display: 'flex', width: '100%' }}>
                                 {/* Hình ảnh sản phẩm */}
@@ -75,6 +76,7 @@ const Cart = () => {
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
                                     <InputNumber
                                         min={0}
+                                        max={products.find((product) => product.id === item.id).inStock}
                                         value={item.quantity}
                                         onChange={(value) => updateQuantity(item.id, value)}
                                         style={{ marginBottom: 8 }}

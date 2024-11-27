@@ -11,6 +11,7 @@ import Home from "../pages/user/Home";
 import Login from "../pages/auth/Login";
 import ProductDetail from "../components/user/ProductDetail";
 import Checkout from "../pages/checkout";
+import Customer from "../pages/admin/Customer";
 export const routes = [
     {
         path : "/admin",
@@ -31,6 +32,12 @@ export const routes = [
                 path : "/admin/category",
                 element: (
                     <PrivateRoute rolesAllowed={["admin"]} element={<Category />} />
+                ),
+            },
+            {
+                path : "/admin/customer",
+                element: (
+                    <PrivateRoute rolesAllowed={["admin"]} element={<Customer />} />
                 ),
             },
             {
