@@ -63,12 +63,12 @@ const TableCustomer = () => {
     const fetchData = async () => {
 
         setLoading(true);
-        // Call API here
+        // Call API từ server để lấy dữ liệu
         const response = await fetch('http://localhost:8080/BE_PRINTER/api/v1/user');
         if (response.ok) {
             const result = await response.json();
             setData(result || []);
-
+            localStorage.setItem('users', JSON.stringify(result));
         }
         setLoading(false);
     }
@@ -136,7 +136,7 @@ const TableCustomer = () => {
     
     <>
     {loading ? (<Spin size= "large" style={{display : "flex" , alignItems : 'center' , justifyContent : 'center' , marginTop : '100px'}}></Spin>):(
-          <Table columns={columns} dataSource={data} />
+          <Table columns={columns} dataSource={data} key={data.id} />
     )}
  
     

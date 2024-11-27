@@ -1,37 +1,39 @@
 import { Button, Col, Drawer, Form, Image, Input, Modal, Row, Space } from "antd";
 import { useEffect, useState } from "react";
-
-const EditFormUser = ({ category, onClose, visible, onSuccess }) => {
+import "./drawerEditUser.scss"
+const EditFormUser = ({ user, onClose, visible, onSuccess }) => {
     const [form] = Form.useForm();
     const [loading , setLoading] = useState(false);
     useEffect(() => {
-        if (category) {
-            form.setFieldsValue(category); // Gán giá trị productProps vào form
+        if (user) {
+            form.setFieldsValue(user); // Gán giá trị productProps vào form
         }
-    }, [category])
+    }, [user])
 
 
     const handleSubmit = async () => {
         try {
             setLoading(true);
             const values = await form.validateFields();
-            const response = await fetch(`http://localhost:8080/BE_PRINTER/api/v1/categories/${values.id}`, {
-                method: 'PUT',
+            const response = await fetch(`http://localhost:8080/BE_PRINTER/api/v1/user/${values.id}`,{
+                method: "PUT",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/json",    
                 },
                 body: JSON.stringify({
                     id: values.id,
-                    name: values.name,
-                    description: values.description,
-                    imguri: values.imguri,
-                    products: values.products
+                    username: values.username,
+                    password: values.password,
+                    role: values.role,
+                    shippingAddress: values.shippingAddress,
+                    phone: values.phone,
+                    email : values.email
                 })
-            })
+            });
             if (response.ok) {
                 const result = await response.json();
                 Modal.success({
-                    content: "Cập nhật category thành công!",
+                    content: "Cập nhật User thành công!",
                 });
                 onSuccess(result);
             }
@@ -44,7 +46,7 @@ const EditFormUser = ({ category, onClose, visible, onSuccess }) => {
     return (
         <>
             <Drawer
-                title="Edit Category"
+                title="Edit User"
                 width={700}
                 onClose={onClose}
                 open={visible}
@@ -62,11 +64,11 @@ const EditFormUser = ({ category, onClose, visible, onSuccess }) => {
                     </Space>
                 }
             >
-                <Form layout="vertical" hideRequiredMark form={form} initialValues={category}>
+                <Form layout="vertical" hideRequiredMark form={form} initialValues={user}>
 
                     <Row gutter={16}>
 
-                        <Col span={12}>
+                        <Col span={8}>
                             <Form.Item name="id" style={{ display: "none" }}>
 
 
@@ -77,46 +79,95 @@ const EditFormUser = ({ category, onClose, visible, onSuccess }) => {
                             </Form.Item>
 
                             <Form.Item
-                                name="name"
-                                label="Name"
+                                name="username"
+                                label="User Name"
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Please enter product name',
+                                        message: 'Please enter user name',
                                     },
                                 ]}
                             >
                                 <Input placeholder="Please enter product name" />
                             </Form.Item>
                         </Col>
-
-                    </Row>
-
-                    <Row gutter={16}>
-                        <Col span={24}>
-                            <Form.Item name="products" style={{ display: "none" }} />
-
-                            <Form.Item
-                                name="description"
-                                label="Description"
+                        <Col span={8} >
+                        <Form.Item
+                                name="password"
+                                label="Password"
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'please enter url description',
+                                        message: 'Please enter user password',
                                     },
                                 ]}
                             >
-                                <Input.TextArea rows={4} placeholder="please enter url description" />
+                                <Input placeholder="Please enter product name" />
+                            </Form.Item>
+                        </Col>
+                        <Col span={8} >
+                        <Form.Item
+                                name="role"
+                                label="Role"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: "Please enter user's role",
+                                    },
+                                ]}
+                            >
+                                <Input placeholder="Please enter user's role" />
                             </Form.Item>
                         </Col>
                     </Row>
 
                     <Row gutter={16}>
-                        <Col span={24}>
-                            <Form.Item name="imguri" label="Image"/>
-                            <Image src={form.getFieldValue('imguri')} alt='Preview' preview={false} ></Image>
+                        <Col span={6}>
+                            <Form.Item
+                                name="phone"
+                                label="Phone"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'please enter user phone',
+                                    },
+                                ]}
+                            >
+                                <Input placeholder="please enter user's phone" />
+                            </Form.Item>
+                        </Col>
+                        <Col span={18}>
+                            <Form.Item
+                                name="shippingAddress"
+                                label="Shipping Address"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: "please enter users's shipping address ",
+                                    },
+                                ]}
+                            >
+                                <Input placeholder="please enter user's shipping address" />
+                            </Form.Item>
                         </Col>
                     </Row>
+                    <Row gutter={16}>
+                        <Col span={12}>
+                            <Form.Item
+                            name= "email"
+                            label="Email"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please enter user email',
+                                },
+                            ]}
+                            >
+                                <Input placeholder="Please enter user email" />
+                            </Form.Item>
+                        </Col>
+                    </Row>
+
                 </Form>
             </Drawer>
         </>
