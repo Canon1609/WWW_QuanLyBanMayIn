@@ -6,7 +6,8 @@ import OpenAI from "openai";
 import { useCart } from "../../../service/CartContext";
 import { Link, useNavigate, useNavigation } from "react-router-dom";
 import { formatCurrency } from "../../../helper/convertMoney";
-const ProductItem = () => {
+const ProductItem = ({sorts}) => {
+    
     const [products, setProducts] = useState(
         JSON.parse(localStorage.getItem('products')) || []
     );
@@ -32,10 +33,10 @@ const ProductItem = () => {
     const handleDetail = (id) => {
         navigate(`/product/${id}`)
     }
-    // const limitProducts = products.slice(0,6);
+    const limitProducts = products.slice(0,10);
     return (
         <>
-            {products.map((item) => {
+            {limitProducts.map((item) => {
                 return (
                     <div className="product-item" key={item.id}>
                         <div className="product-item__img" onClick={()=>{handleDetail(item.id)}}>
@@ -43,8 +44,11 @@ const ProductItem = () => {
                         </div>
                         <p className="product-item__title">{item.name}</p>
                         <p className="product-item__price">{formatCurrency(item.price)}</p>
-                        {item.inStock <= 0 ? <p className="product-item__outStock">Out of Stock</p> : ""}
-                        <button className="add-to-cart-btn" onClick={()=> addToCart({id : item.id , name : item.name , price : item.price })} >add to cart</button>
+                        {item.inStock <= 0 ? <p className="product-item__outStock">Tạm hết hàng</p> : ""}
+                        <div style={{display : 'flex' , justifyContent : 'center' }}>
+                        <button className="add-to-cart-btn" onClick={()=> addToCart({id : item.id , name : item.name , price : item.price })} >Thêm vào giỏ hàng</button>
+                        </div>
+                       
                     </div>
                    
                 )

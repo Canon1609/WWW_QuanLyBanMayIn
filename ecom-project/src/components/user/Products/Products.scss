@@ -4,7 +4,39 @@
     justify-content: space-between;
     align-items: center;
     h2{
-        font-size: 30px;
-        font-weight: 500;
+        font-size: 18px;
+        font-weight: 600;
     }
 }
+.product-slider .slick-slide {
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
+  }
+  
+  .product-slider .product-item {
+    text-align: center;
+    padding: 50px;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+  }
+  
+  .product-slider .slick-prev, .product-slider .slick-next {
+    background-color: rgba(0, 0, 0, 0.5); /* Tạo hiệu ứng cho mũi tên */
+    border-radius: 50%;
+  }
+  
+  .product-slider .slick-prev:hover, .product-slider .slick-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .product-slider .slick-dots {
+    bottom: -30px;
+  }
+  
+  .product-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  

@@ -13,6 +13,7 @@ import ProductDetail from "../components/user/ProductDetail";
 import Checkout from "../pages/checkout";
 import Customer from "../pages/admin/Customer";
 import Order from "../pages/admin/Order";
+import Shop from "../pages/user/Shop";
 export const routes = [
     {
         path : "/admin",
@@ -88,6 +89,10 @@ export const routes = [
             {
                 path : 'checkout',
                 element : <Checkout></Checkout>
+            },
+            {
+                path : 'shop',
+                element : <Shop/>
             }
         ]
     }

@@ -10,7 +10,10 @@ const Home = () => {
         <div className="home">
                 <Banner/>
                 <Brand/>
+                <div className="container">
                 <Product/>
+                </div>
+              
         </div>
     </>
    ) 

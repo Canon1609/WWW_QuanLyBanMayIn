@@ -21,6 +21,52 @@
         display: flex;
     }
 }
+.header-menu{
+    background-color: #fff; /* Màu nền cho menu */
+    // border-bottom: 2px solid #f0f0f0; /* Viền dưới cho menu */
+    // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Thêm hiệu ứng đổ bóng nhẹ */
+    padding: 10px 0;
+   
+}
+.header-menu .ant-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+.header-menu .ant-menu-item {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 40px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.header-menu .ant-menu-item:hover {
+    background-color: #1890ff; /* Màu nền khi hover */
+    color: #fff; /* Màu chữ khi hover */
+    border-radius: 4px; /* Bo góc */
+}
+.header-menu .ant-menu-item-selected {
+    background-color: #1890ff;
+    color: #fff;
+}
+.header-menu .ant-menu-item:focus {
+    background-color: #f0f0f0;
+}
+.header-menu .ant-menu-item:hover {
+    transform: scale(1.05); /* Phóng to một chút khi hover */
+}
+.header-menu .ant-menu-item a {
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+}
+.header-menu .ant-menu-item a:hover {
+    color: #1890ff;
+}
+.header-menu .ant-menu-item a:focus {
+    color: #1890ff;
+}
 .header-top{
     width: 100%;
     height: 80px;

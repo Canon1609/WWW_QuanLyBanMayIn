@@ -2,13 +2,13 @@
    
 }
 .banner{
-    // margin-top: 20px;
     align-items: center;
     justify-content: space-between;
     display: flex;
-    height: 560px;
+    height: auto;
+    padding: 50px;
     width : 100%;
-    background-color: #ecdfd5;
+    background-color:   #0fc2b3;
     border-radius: 15px;
 }
 .promo-content {
@@ -24,9 +24,10 @@
         margin-bottom: 10px;
     }
     h1 {
-        font-size: 2rem;
-        color: #3b0a63;
+        font-size: 4rem;
+        color: #1A3D73 ;
         margin-bottom: 15px;
+        font-weight: 700;
     }
 
     p {
@@ -36,7 +37,7 @@
     }
 
     .shop-now-button {
-        background-color: #6a0dad;
+        background-color: #FFCC00 ;
         border: none;
         color: white;
         margin-bottom: 15px;
@@ -48,13 +49,13 @@
         .discount-price {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #d32f2f;
+            color: #c91b2a ;
             margin-right: 10px;
         }
 
         .original-price {
             font-size: 1.2rem;
-            color: #888;
+            color: #4D4D4D ;
             text-decoration: line-through;
             margin-right: 10px;
         }

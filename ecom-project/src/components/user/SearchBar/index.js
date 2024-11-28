@@ -4,7 +4,7 @@ import { FaSearch } from "react-icons/fa";
 const SearchBar = ()=>{
     return(
         <>
-         <Input placeholder="Search for products , categories or brands"
+         <Input placeholder="Nhập từ khóa tìm kiếm ..."
          size="large"
          allowClear
          style={{width : "700px"}}

@@ -30,10 +30,10 @@ const Cart = () => {
     return (
         <>
             {/* Icon giỏ hàng với hiệu ứng badge */}
-            <Badge count={cartItems.length} overflowCount={99} offset={[0, 0]} style={{ backgroundColor: '#ff4d4f', color: 'white' }}>
+          
+            <Badge count={cartItems.length} overflowCount={99} offset={[15, 0]} style={{ backgroundColor: "blueviolet", color: 'white' }}>
                 <FaCartShopping onClick={showDrawer} style={{ fontSize: 35, cursor: 'pointer', color: '#333' }} />
             </Badge>
-
             {/* Drawer giỏ hàng */}
             <Drawer
                 title="Your Cart"

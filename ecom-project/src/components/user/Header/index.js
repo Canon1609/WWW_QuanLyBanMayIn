@@ -1,5 +1,5 @@
 import { Avatar, Badge, Col, Menu, Row, Select } from "antd";
-// import logo from "../../../assets/images/logo.png"
+import logo from "../../../assets/images/logo.png"
 import { FaLocationDot, FaCircleUser, FaCartShopping } from "react-icons/fa6";
 import "./Header.scss"
 import SearchBar from "../SearchBar";
@@ -13,22 +13,22 @@ import Cart from "../../../pages/user/Cart";
 import Home from "../../../pages/user/Home";
 // import { useAuth } from "../../helper/AuthContext/AuthContext";
 const Headers = () => {
-    const {isAuth , userName , logout} = useAuth();
-  
+    const { isAuth, userName, logout } = useAuth();
+
     const navigate = useNavigate();
-   
+
 
     return (
         <>
             <div className="header-top-side">
                 <div>
-                    <p className="header-top-side__title">FREE delivery & 40% Discount for next 3 orders! Place your 1st order in</p>
+                    <p className="header-top-side__title">Giao hàng miễn phí và giảm giá 40% cho 3 đơn hàng tiếp theo! Đặt đơn hàng đầu tiên của bạn vào</p>
                 </div>
                 <div>
-                    <p className="header-top-side__title">Until the end of the sale: 47 day 6h 59m 59s</p>
+                    <p className="header-top-side__title">Kết thúc sau : 47 ngày 6 giờ  59 phút 59s</p>
                 </div>
             </div>
-            <div className="header-mid container ">
+            {/* <div className="header-mid container ">
                 <div className="header-mid__menu">
                     <ul style={{ display: 'flex', alignItems: 'center' }}>
                         <li>About us</li>
@@ -40,7 +40,7 @@ const Headers = () => {
                 <div>
                     <p>Order Tracking</p>
                 </div>
-            </div>
+            </div> */}
             <div className="container">
                 <Row gutter={[24, 24]}>
                     <Col span={24}>
@@ -50,30 +50,27 @@ const Headers = () => {
                                     {/* <img src={logo}></img> */}
                                 </div>
 
-                                <div className="icon">
-                                    <FaLocationDot className="ics" />
-                                </div>
                             </div>
                             <div className="header-top__search">
                                 <SearchBar />
                             </div>
-                                {isAuth ?  (                              
+                            {isAuth ? (
                                 <>
                                     <div className="header-top__user">
-                                     <UserDropDown userName = {userName} onLogout = {logout} />
-                                            <Cart></Cart>   
+                                        <UserDropDown userName={userName} onLogout={logout} />
+                                        <Cart></Cart>
                                     </div>
-                                </> ): 
+                                </>) :
                                 (
-                                <>
-                                <div className="header-top__user">
-                                <FaCircleUser />
-                                <Link to={"/login"}>Sign In</Link>
-                                <FaCartShopping />
-                                </div>
-                                </>
+                                    <>
+                                        <div className="header-top__user">
+                                            <FaCircleUser />
+                                            <Link to={"/login"}>Đăng Nhập</Link>
+                                            <FaCartShopping />
+                                        </div>
+                                    </>
                                 )
-                                }
+                            }
 
                         </div>
                     </Col>
@@ -81,15 +78,12 @@ const Headers = () => {
                 <Row gutter={[24, 24]}>
                     <Col span={24}>
                         <div className="header-menu">
-                            <div className="header-menu__left">
                                 <Menu mode="horizontal">
                                     <Menu.Item>
+                                        <Link to="/">Trang Chủ</Link>
                                     </Menu.Item>
                                     <Menu.Item>
-                                        <Link to="/">Home</Link>
-                                    </Menu.Item>
-                                    <Menu.Item>
-                                        <Link to= "/shop">Shop</Link>
+                                        <Link to="/shop">Cửa Hàng</Link>
                                     </Menu.Item>
                                     <Menu.Item>
                                         <Link to="/Filler">Filler</Link>
@@ -98,11 +92,9 @@ const Headers = () => {
                                         <Link to="/blog">Blog</Link>
                                     </Menu.Item>
                                     <Menu.Item>
-                                        <Link to="/contact">Contact</Link>
+                                        <Link to="/contact">Liên Hệ</Link>
                                     </Menu.Item>
                                 </Menu>
-                            </div>
-                            <div className="header-menu__right"></div>
                         </div>
                     </Col>
                 </Row>
