@@ -90,31 +90,42 @@ const Login = () => {
         }
        
     }
+    // xử lý đăng ký
     const onRegis = async (value)=>{
+           
             const { username , email , password} = value;
+            const payload={
+                username : username,
+                email : email,
+                password : password,
+                role : "user"
+            }
             try {
                 const res = await fetch('http://localhost:8080/BE_PRINTER/api/v1/user/signup',{
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ username, password , email})
+                    body: JSON.stringify(payload)
                 })
 
                 if(res.ok){
                     const data = await res.json();
                     console.log(data);
-                     if(data.status === 201){
-                        wellcomereg(username);
-                        setIsLogin(true);
-                        setTimeout(()=>{
-                            navigate("/login")
-                        },2500) 
-                     }
-                  
+                    
+                    if(data.status === 400){
+                        Regfail();
+                    } 
+                  else{
+                    wellcomereg(username);
+                    setIsLogin(true);
+                    setTimeout(()=>{
+                        navigate("/login")
+                    },2500) 
+                  }
                 }
             } catch (error) {
-                console.error("Login failed : " , error);
+             Regfail();
             }
     }
     return (

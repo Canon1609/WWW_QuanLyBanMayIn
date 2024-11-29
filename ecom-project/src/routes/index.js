@@ -56,20 +56,6 @@ export const routes = [
         ]
     },
 
-    // {
-    //     path : "/user",
-    //     element : <PrivateRoute rolesAllowed={["user"]} element={<Layouts></Layouts>} ></PrivateRoute>,
-    // },
-    // {
-    //     path : "/login",
-    //     element : <Login/>,
-    //     chidren :[
-    //         {
-    //             path : "/login",
-    //             element : <Login/>
-    //         }
-    //     ]
-    // }
         {
         path : "/",
         element : <Layouts/>,

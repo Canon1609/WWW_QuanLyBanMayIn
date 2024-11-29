@@ -4,21 +4,25 @@
     justify-content: space-between;
     align-items: center;
     h2{
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 600;
     }
 }
 .product-slider .slick-slide {
-    display: flex;
-    // justify-content: center;
-    // align-items: center;
+    // display: flex;
+    // justify-content: center; 
+
   }
   
   .product-slider .product-item {
-    text-align: center;
-    padding: 50px;
-    border: 1px solid #f0f0f0;
-    border-radius: 8px;
+    // text-align: center;
+    // margin: 0 10px; /* Add margin on both sides of each product item */
+    // padding: 30px; /* Adjust padding for better spacing */
+    // border: 1px solid #f0f0f0;
+    // border-radius: 8px;
+    // background-color: #fff; /* Optional, for a clean background */
+  
+
   }
   
   .product-slider .slick-prev, .product-slider .slick-next {
