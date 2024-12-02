@@ -23,7 +23,9 @@ const UserDropDown = ({ userName, onLogout }) => {
                 <>
                     <div style={{display : 'flex'}}>
                         <FaRegUser />
-                        <p>Thông tin tài khoản</p>
+                        <Link style={{color : 'black'}} to="/profile">Thông tin tài khoản</Link>
+                        
+                      
                     </div>
 
 

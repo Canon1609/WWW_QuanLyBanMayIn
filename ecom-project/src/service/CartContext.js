@@ -9,6 +9,7 @@ export const CartProvider = ({ children }) => {
     // Tải dữ liệu giỏ hàng từ localStorage khi ứng dụng tải lần đầu
     useEffect(() => {
         const storedCart = localStorage.getItem('cart');
+
         if (storedCart) {
             setCartItems(JSON.parse(storedCart));
         }
@@ -24,7 +25,7 @@ export const CartProvider = ({ children }) => {
     }, [cartItems]);
 
 
-     // Thêm sản phẩm vào giỏ hàng
+     // Thêm sản phẩm vào giỏ hàng 
      const addToCart = (product) => {
         setCartItems((prevItems) => {
             const existingItem = prevItems.find((item) => item.id === product.id);
@@ -44,7 +45,10 @@ export const CartProvider = ({ children }) => {
     // Cập nhật số lượng sản phẩm trong giỏ hàng
     const updateQuantity = (id, quantity) => {
         setCartItems((prevItems) =>
+            // nếu quantity = 0 thì xóa sản phẩm khỏi giỏ hàng
+            quantity === 0 ? prevItems.filter((item) => item.id !== id):
             prevItems.map((item) =>
+                
                 item.id === id ? { ...item, quantity : quantity || 1 } : item
             )
         );

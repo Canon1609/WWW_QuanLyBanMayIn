@@ -17,7 +17,7 @@ const Order = () => {
     }, []);
     const fetchOrder = async () => {
         try {
-            const response = await fetch('http://localhost:8080/BE_PRINTER/api/v1/orders');
+            const response = await fetch('http://localhost:8080/BE_PrinterShop/api/v1/orders');
             if (response.ok) {
                 const result = await response.json();
 
@@ -73,16 +73,9 @@ const Order = () => {
 
     ]
 
-    const handleClick = () => {
-        setVisible(true);
-
-    }
-    const handleOnClose = () => {
-        setVisible(false)
-    }
     const handleSearch = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/BE_PRINTER/api/v1/orders/search?search=${search}`);
+            const response = await fetch(`http://localhost:8080/BE_PrinterShop/api/v1/orders/search?search=${search}`);
             if (response.ok) {
                 const data = await response.json();
                 setResultSearch(data);
@@ -113,22 +106,23 @@ const Order = () => {
                 <Row gutter={[20, 20]}>
                 <Col span={24} >
                         <div className="Orders">
-                            <h3 className="product__title">Orders</h3>
+                            <h3 className="product__title">Đơn hàng</h3>
                         </div>
                     </Col>
                     <Col span={24}>
                         <div className="search-area">
                             <Input value={search} onChange={(e) => setSearch(e.target.value)} allowClear={true} style={{ width: "50%", marginRight: "25px", height: "50px" }} 
-                                placeholder="Search by user name , email , ..."></Input>
+                                placeholder="Tìm kiếm theo tên , email , phương thức thanh toán"></Input>
                             <Button type="primary" className="search-area__btn" onClick={handleSearch}>Tìm kiếm</Button>
-                            <Button type="primary" className="search-area__btn" onClick={handleReset}>Reset</Button>
+                            <Button type="primary" className="search-area__btn" onClick={handleReset}>Làm mới</Button>
                         </div>
                     </Col>
                 </Row>
                 <Row gutter={[20, 20]}>
                   
                     <Col span={24} style={{marginTop : 100}} >
-                    {resultSearch.length > 0 ? <Table dataSource={resultSearch} columns={columns} key={resultSearch.id}></Table> :
+                    {resultSearch.length > 0 ? 
+                        <Table dataSource={resultSearch} columns={columns} key={resultSearch.id}></Table> :
                         <TableOrder data={data} setdata={setData} />
                     }
                     </Col>

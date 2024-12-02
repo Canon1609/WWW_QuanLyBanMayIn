@@ -15,7 +15,7 @@ const Login = () => {
             {
                 contentBg : '#ffffff',
                 type: 'success',
-                content: `wellcome , ${username}`
+                content: `Xin chào , ${username}`
             }
         )
     }
@@ -42,12 +42,11 @@ const Login = () => {
     }
     // dùng login từ context
     const {SetLogInState } = useAuth();
-
     // xử lý login
     const handleLogin = async (values) => {
         const { username, password } = values;
         try {
-            const res = await fetch('http://localhost:8080/BE_PRINTER/api/v1/login', {
+            const res = await fetch('http://localhost:8080/BE_PrinterShop/api/v1/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -92,7 +91,13 @@ const Login = () => {
     }
     // xử lý đăng ký
     const onRegis = async (value)=>{
-           
+            if(value.password !== value.repassword){
+                messageApi.open({
+                    type : 'warning',
+                    content : 'Mật khẩu không khớp !'
+                })
+                return;
+            }
             const { username , email , password} = value;
             const payload={
                 username : username,
@@ -101,7 +106,7 @@ const Login = () => {
                 role : "user"
             }
             try {
-                const res = await fetch('http://localhost:8080/BE_PRINTER/api/v1/user/signup',{
+                const res = await fetch('http://localhost:8080/BE_PrinterShop/api/v1/user/signup',{
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -142,7 +147,7 @@ const Login = () => {
                 ]}
             />
             {isLogin ? (<>
-                <h2 className="form__title">LOGIN</h2>
+                <h2 className="form__title">ĐĂNG NHẬP</h2>
                 <Form
                     className="form"
                     name="login"
@@ -217,18 +222,18 @@ const Login = () => {
                             offset: 8,
                             span: 16,
                         }}>
-                        <p>If you don't have account    <a
+                        <p>Nếu bạn chưa có tài khoản ?<a
                                     href="/register"
                                     onClick={(e) => {
                                         e.preventDefault();
                                         setIsLogin(false);
                                     }}
-                                >Register</a> </p>
+                                >  Đăng kí </a> </p>
                     </Form.Item>
                 </Form>
 
             </>) : (<>
-                <h2 className="form__title">REGISTER</h2>
+                <h2 className="form__title">ĐĂNG KÍ TÀI KHOẢN</h2>
                 <Form
                     className="form"
                     name="login"
@@ -262,7 +267,7 @@ const Login = () => {
                     </Form.Item>
 
                     <Form.Item
-                        label="Email address"
+                        label="Email"
                         name="email"
                         rules={[
                             {
@@ -286,7 +291,19 @@ const Login = () => {
                     >
                         <Input.Password />
                     </Form.Item>
-
+                    
+                    <Form.Item
+                        label="Confirm Password"
+                        name="repassword"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your password!',
+                            },
+                        ]}
+                    >
+                        <Input.Password />
+                    </Form.Item>
                     <Form.Item
                         className="submit"
                         wrapperCol={{
@@ -295,7 +312,7 @@ const Login = () => {
                         }}
                     >
                         <Button type="primary" htmlType="submit" style={{ width: '100%', backgroundColor: 'purple' }} >
-                            Register
+                            Đăng kí
                         </Button>
                     </Form.Item>
                     <Form.Item
@@ -304,13 +321,13 @@ const Login = () => {
                             offset: 8,
                             span: 16,
                         }}>
-                        <p>If you have account <a
+                        <p>Nếu bạn đã có tài khoản  <a
                                     href="/login"
                                     onClick={(e) => {
                                         e.preventDefault();
                                         setIsLogin(true);
                                     }}
-                                >Sign In</a> </p>
+                                >  Đăng nhập</a> </p>
                     </Form.Item>
                 </Form>
             </>)}

@@ -13,7 +13,7 @@ function MenuSider(props){
         {
        
 
-            label : (<Link to={"/admin/dashboard"}>DashBoard</Link>),
+            label : (<Link to={"/admin/dashboard"}>Trang chủ</Link>),
 
 
             key : "1",
@@ -23,22 +23,22 @@ function MenuSider(props){
         },
         {
        
-          label : "Manage",
+          label : "Quản Lý",
           key : 2,
           icon :<DashboardOutlined/>,
           children : [
             {
-              label : (<Link to={"/admin/products"}>Products</Link>),
+              label : (<Link to={"/admin/products"}>Sản Phẩm</Link>),
               key : 2.1,
               icon : <ProductOutlined />
             },
             {
-              label : (<Link to={"/admin/category"}>Category</Link>),
+              label : (<Link to={"/admin/category"}>Loại Sản Phẩm</Link>),
               key : 2.2,
               icon : <DashboardOutlined></DashboardOutlined>
             },
             {
-              label : (<Link to={"admin/coupons"}>Coupons</Link>),
+              label : (<Link to={"admin/coupons"}>Mã Khuyến Mãi</Link>),
               key : 2.3,
               icon : <FaPercent />
             }
@@ -47,7 +47,7 @@ function MenuSider(props){
       },
       {
         
-        label : (<Link to={"/admin/customer"}>Customer</Link>),
+        label : (<Link to={"/admin/customer"}>Khách Hàng</Link>),
         key : 3,
         icon :<FaCircleUser />,
         children : "",
@@ -55,7 +55,7 @@ function MenuSider(props){
     },
     {
      
-      label : (<Link to={"/admin/order"}>Order</Link>),
+      label : (<Link to={"/admin/order"}>Đơn Hàng</Link>),
       key : 4,
       icon :<FaBox/>,
       children : "",

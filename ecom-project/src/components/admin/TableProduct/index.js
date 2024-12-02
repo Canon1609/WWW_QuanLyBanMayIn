@@ -18,7 +18,7 @@ const TableProduct = () => {
     }, []);
     const fetchProduct = async () => {
         try {
-            const response = await fetch('http://localhost:8080/BE_PRINTER/api/v1/products');
+            const response = await fetch('http://localhost:8080/BE_PrinterShop/api/v1/products');
             if (response.ok) {
                 const result = await response.json();
                 console.log(result);
@@ -43,7 +43,7 @@ const TableProduct = () => {
             onOk: async () => {
                 // callapi xóa
                 try {
-                    const response = await fetch(`http://localhost:8080/BE_PRINTER/api/v1/products/${id}`, {
+                    const response = await fetch(`http://localhost:8080/BE_PrinterShop/api/v1/products/${id}`, {
                         method: "DELETE"
                     })
                     if (!response.ok) {
@@ -83,38 +83,38 @@ const TableProduct = () => {
     }
     const columns = [
         {
-            title: 'PRODUCT NAME',
+            title: 'Tên sản phẩm',
             dataIndex: 'name',
             key: 'name',
         },
         {
-            title: 'CATEGORY',
+            title: 'Loại sản phẩm',
             dataIndex: 'categoryId',
             key: 'categoryId',
         },
         {
-            title: 'PRICE',
+            title: 'Giá',
             dataIndex: 'price',
             key: 'price',
             render: (price) => price.toLocaleString("vi-VN"),
         },
         {
-            title: 'RAM',
-            dataIndex: 'ram',
+            title: 'Bộ nhớ',
+            dataIndex: 'ram' ,
             key: 'ram',
         },
         {
-            title: 'SIZE PAGE',
+            title: 'Khổ giấy in',
             dataIndex: 'sizePage',
             key: 'sizepage',
         },
         {
-            title: "Actions",
+            title: "Hành động",
             key: "actions",
             render: (_, record) => (
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <FaEdit onClick={()=>{handleEdit(record.id)}} />
-                    <DeleteOutlined onClick={() => {showDeleteConfirm(record.id) }} />
+                    <FaEdit onClick={()=>{handleEdit(record.id)}} style={{fontSize : '24px'}} />
+                    <DeleteOutlined onClick={() => {showDeleteConfirm(record.id) }}  style={{fontSize : '24px'}} />
                 </div>
             ),
         },

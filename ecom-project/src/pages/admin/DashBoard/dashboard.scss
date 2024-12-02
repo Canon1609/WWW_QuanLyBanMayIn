@@ -22,6 +22,21 @@
         // width: calc(100% - 14%);
         // z-index: 9999;
     }
+    &__header-avt{
+         width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 30px;
+        margin-top: 20px;
+        p{
+            font-weight: bold;
+            font-size: 16px;
+        }
+    }
     &__header-icon{
         .btn{
             background-color: green;

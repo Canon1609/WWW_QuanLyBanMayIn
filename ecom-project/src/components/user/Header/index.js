@@ -86,9 +86,6 @@ const Headers = () => {
                                         <Link to="/shop">Cửa Hàng</Link>
                                     </Menu.Item>
                                     <Menu.Item>
-                                        <Link to="/Filler">Filler</Link>
-                                    </Menu.Item>
-                                    <Menu.Item>
                                         <Link to="/blog">Blog</Link>
                                     </Menu.Item>
                                     <Menu.Item>

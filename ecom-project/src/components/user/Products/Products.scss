@@ -9,22 +9,9 @@
     }
 }
 .product-slider .slick-slide {
-    // display: flex;
-    // justify-content: center; 
-
+    padding: 0 10px; 
   }
-  
-  .product-slider .product-item {
-    // text-align: center;
-    // margin: 0 10px; /* Add margin on both sides of each product item */
-    // padding: 30px; /* Adjust padding for better spacing */
-    // border: 1px solid #f0f0f0;
-    // border-radius: 8px;
-    // background-color: #fff; /* Optional, for a clean background */
-  
 
-  }
-  
   .product-slider .slick-prev, .product-slider .slick-next {
     background-color: rgba(0, 0, 0, 0.5); /* Tạo hiệu ứng cho mũi tên */
     border-radius: 50%;
@@ -37,10 +24,83 @@
   .product-slider .slick-dots {
     bottom: -30px;
   }
-  
-  .product-item img {
+
+  .product-slider  .product-item {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 230px;
+    height: auto;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    &__img{
+        width: 100%;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+}
+
+.product-slider  .product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-slider  .product-item__img img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
-  }
-  
+    object-fit: cover;
+}
+
+.product-slider  .product-item:hover .product-item__img img {
+    transform: scale(1.05);
+}
+
+.product-slider  .product-item__title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #090707;
+    height: 20px;
+
+    // line-height: 1.4;
+}
+
+.product-slider  .product-item__price {
+    font-size: 1.3rem;
+    color: #103CBE;
+    font-weight: bold;
+    margin-top:  60px;
+}
+
+.product-slider  .product-item__inStock {
+    font-size: 0.9rem;
+    color: #4CAF50;
+    margin-bottom: 15px;
+}
+
+.add-to-cart-btn {
+   margin-top: 50px;
+    display: inline-block;
+    padding: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #ff5722;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #e64a19;
+}
+// .add-to-cart-btn:active {
+//     transform: scale(0.98);
+//     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+// }
+
+
+

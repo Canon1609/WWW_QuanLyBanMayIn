@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Drawer, Form, Input, message, Modal, Row, Select, Space, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import {GetTokenSirv} from "../../../service/ApiService"
 const { Option } = Select;
 const AddProductForm = ({ onClose, visible }) => {
+  const [token , setToken] = useState("");
   const [form] = Form.useForm();
   const [fileList, setFileList] = useState([]);
+  
   useEffect(() => {
-
+ 
   }, [])
 
   const handleChange = (info) => {
     const { fileList: newFileList } = info;
-
     // Lưu fileList vào state và đảm bảo lấy đúng `originFileObj`
     const formattedFileList = newFileList.map((file) => ({
       ...file,
@@ -21,67 +23,34 @@ const AddProductForm = ({ onClose, visible }) => {
     setFileList(formattedFileList);
   };
 
-  async function uploadToSirv(file) {
-    const SIRV_TOKEN = "YOUR_SIRV_TOKEN"; // Thay bằng token của bạn
-    const SIRV_UPLOAD_URL = "https://api.sirv.com/v2/files/upload";
 
+  const handleFinish = async (values) => {
+    
+    // const values = await form.validateFields();
+
+
+    
     const formData = new FormData();
-    formData.append("file", file, file.name);
+    if (fileList.length > 0) {
+      formData.append('file', fileList[0].originFileObj, fileList[0].originFileObj.name);
+    }
+       // Append other form data fields
+    formData.set('name', values.name);
+    formData.set('price', values.price);
+    formData.set('categoryId', values.categoryId);
+    formData.set('inStock', values.inStock);
+    formData.set('ram', values.ram);
+    formData.set('sizePage', values.sizePage);
+    formData.set('description', values.description);
+   
 
     try {
-        const response = await fetch(SIRV_UPLOAD_URL, {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${SIRV_TOKEN}`,
-            },
-            body: formData,
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            return { error: errorData.message || "Lỗi không xác định" };
-        }
-
-        const result = await response.json();
-        return result; // Trả về đối tượng chứa `fileUrl`
-    } catch (error) {
-        console.error("Lỗi upload Sirv:", error);
-        return { error: error.message };
-    }
-}
-  const handleSubmit = async () => {
-    const values = await form.validateFields();
-    if (!values.file) {
-      Modal.error({
-        content: "Vui lòng upload ảnh sản phẩm"
-      })
-    }
-    if (fileList.length === 0) {
-      message.error("Vui lòng tải lên ít nhất một ảnh!");
-      return;
-    }
-    // Lấy file đầu tiên và chuyển thành Base64
-    const base64Image = await getBase64(fileList[0].originFileObj);
-    // const pureBase64 = base64Image.replace(/^data:image\/\w+;base64,/, ''); // Loại bỏ phần tiền tố
-    // prepare the payload 
-    const payload = {
-      name: values.name,
-      price: values.price,
-      ram: values.ram,
-      inStock: values.inStock,
-      sizePage: values.sizePage,
-      description: values.description,
-      img: base64Image
-
-    }
-
-    try {
-      const response = await fetch(`http://localhost:8080/BE_PRINTER/api/v1/products/add`, {
+      const response = await fetch(`http://localhost:8080/BE_PrinterShop/api/v1/products`, {
         method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+           'Content-Type': 'multipart/form-data'
         },
-        body: JSON.stringify(payload)
+        body: formData
       })
       if (response.ok) {
         const result = await response.json();
@@ -90,20 +59,19 @@ const AddProductForm = ({ onClose, visible }) => {
           content: "Thêm sản phẩm thành công!",
         });
       }
+      else {
+        // Handle non-2xx HTTP status codes (API response errors)
+        const errorData = await response.json();
+        console.error("API response error:", errorData);
+        Modal.error({ content: "Thêm sản phẩm thất bại!" }); // Assuming Modal is a UI component
+      }
       onClose(); // Đóng Drawer sau khi submit
-    } catch (error) {
+    } 
+    catch (error) {
       console.error("Validation failed:", error);
     }
   };
-  // Hàm chuyển file thành Base64
-  const getBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
-  };
+
   return (
     <>
       <Drawer
@@ -119,23 +87,24 @@ const AddProductForm = ({ onClose, visible }) => {
         extra={
           <Space>
             <Button onClick={onClose}>Cancel</Button>
-            <Button onClick={handleSubmit} type="primary">
+            {/* <Button onClick={handleFinish} type="primary">
               Submit
-            </Button>
+            </Button> */}
           </Space>
         }
       >
-        <Form layout="vertical" form={form} >
+        <Form layout="vertical" form={form} onFinish={handleFinish} >
           <Row gutter={16}>
             <Col span={12}>
-              <Form.Item name="id" style={{ display: "none" }}>
+              {/* <Form.Item name="id" style={{ display: "none" }}>
                 <Input type="hidden" />
                 <Form.Item name="img" ></Form.Item>
-              </Form.Item>
+              </Form.Item> */}
 
               <Form.Item
                 name="name"
                 label="Name"
+                type="text"
                 rules={[
                   {
                     required: true,
@@ -271,6 +240,12 @@ const AddProductForm = ({ onClose, visible }) => {
                 >
                   <Button icon={<UploadOutlined />}>Chọn ảnh</Button>
                 </Upload>
+              </Form.Item>
+
+              <Form.Item>
+                <Button type="primary" htmlType="submit">
+                  Submit
+                </Button>
               </Form.Item>
 
             </Col>

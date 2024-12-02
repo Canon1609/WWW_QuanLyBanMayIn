@@ -15,7 +15,7 @@ const EditFormUser = ({ user, onClose, visible, onSuccess }) => {
         try {
             setLoading(true);
             const values = await form.validateFields();
-            const response = await fetch(`http://localhost:8080/BE_PRINTER/api/v1/user/${values.id}`,{
+            const response = await fetch(`http://localhost:8080/BE_PrinterShop/api/v1/user/${values.id}`,{
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",    
@@ -46,7 +46,7 @@ const EditFormUser = ({ user, onClose, visible, onSuccess }) => {
     return (
         <>
             <Drawer
-                title="Edit User"
+                title="Chỉnh sửa thông tin User"
                 width={700}
                 onClose={onClose}
                 open={visible}
@@ -125,7 +125,7 @@ const EditFormUser = ({ user, onClose, visible, onSuccess }) => {
                         <Col span={6}>
                             <Form.Item
                                 name="phone"
-                                label="Phone"
+                                label="Số điện thoại"
                                 rules={[
                                     {
                                         required: true,
@@ -139,7 +139,7 @@ const EditFormUser = ({ user, onClose, visible, onSuccess }) => {
                         <Col span={18}>
                             <Form.Item
                                 name="shippingAddress"
-                                label="Shipping Address"
+                                label="Địa chỉ nhận hàng"
                                 rules={[
                                     {
                                         required: true,

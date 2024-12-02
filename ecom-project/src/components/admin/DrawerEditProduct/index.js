@@ -12,7 +12,7 @@ const EditForm = ({ product , onClose , visible , onSuccess  }) => {
   const handleSubmit = async () => {
     try {
       const values = await form.validateFields();
-      const response = await fetch(`http://localhost:8080/BE_PRINTER/api/v1/products/${values.id}`,{
+      const response = await fetch(`http://localhost:8080/BE_PrinterShop/api/v1/products/${values.id}`,{
         method : 'PUT',
         headers: {
           "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const EditForm = ({ product , onClose , visible , onSuccess  }) => {
   return (
     <>
       <Drawer
-        title="Edit product"
+        title="Cập nhật sản phẩm"
         width={700}
         onClose={onClose}
         open={visible}
@@ -78,7 +78,7 @@ const EditForm = ({ product , onClose , visible , onSuccess  }) => {
         
               <Form.Item
                 name="name"
-                label="Name"
+                label="Tên sản phẩm"
                 rules={[
                   {
                     required: true,
@@ -92,7 +92,7 @@ const EditForm = ({ product , onClose , visible , onSuccess  }) => {
             <Col span={12}>
               <Form.Item
                 name="price"
-                label="Price"
+                label="Giá"
                 // rules={[
                 //   {
                 //     required: true,
@@ -114,7 +114,7 @@ const EditForm = ({ product , onClose , visible , onSuccess  }) => {
             <Col span={12}>
               <Form.Item
                 name="categoryId"
-                label="Category"
+                label="Loại sản phẩm"
                 rules={[
                   {
                     required: true,
@@ -132,7 +132,7 @@ const EditForm = ({ product , onClose , visible , onSuccess  }) => {
             <Col span={12}>
               <Form.Item
                 name="inStock"
-                label="In Stock"
+                label="Số lượng trong kho"
                 rules={[
                   {
                     required: true,
@@ -148,7 +148,7 @@ const EditForm = ({ product , onClose , visible , onSuccess  }) => {
             <Col span={12}>
               <Form.Item
                 name="ram"
-                label="Ram"
+                label="Bộ nhớ"
                 // rules={[
                 //   {
                 //     required: true,
@@ -165,7 +165,7 @@ const EditForm = ({ product , onClose , visible , onSuccess  }) => {
             <Col span={12}>
             <Form.Item
                 name="sizePage"
-                label="Size Page"
+                label="Khổ giấy in"
                 // rules={[
                 //   {
                 //     required: true,
@@ -186,15 +186,15 @@ const EditForm = ({ product , onClose , visible , onSuccess  }) => {
             <Col span={24}>
               <Form.Item
                 name="description"
-                label="Description"
+                label="Mô tả sản phẩm"
                 rules={[
                   {
                     required: true,
-                    message: 'please enter url description',
+                    message: 'vui lòng nhập mô tả cho sản phẩm',
                   },
                 ]}
               >
-                <Input.TextArea rows={4} placeholder="please enter url description" />
+                <Input.TextArea rows={4} placeholder='vui lòng nhập mô tả cho sản phẩm' />
               </Form.Item>
             </Col>
           </Row>

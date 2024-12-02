@@ -21,13 +21,13 @@ const Product = ()=> {
                 <Row gutter={[20,20]}>
                     <Col span={24} >
                         <div className="product">
-                            <h3 className="product__title">Products</h3>
+                            <h3 className="product__title">SẢN PHẨM</h3>
                         </div>
                     </Col>
                     <Col span={24}>
                         <div className="manage_btn mt-10 pd-10">
                             <Button className="btn-add" htmlType="button" type="primary" onClick={handleClick} >
-                                Add product
+                               Thêm sản phẩm
                             </Button>
                             <AddProductForm  visible={visible} onClose={handleOnClose} />
                         </div>

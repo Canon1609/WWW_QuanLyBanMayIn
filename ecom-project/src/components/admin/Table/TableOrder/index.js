@@ -24,7 +24,7 @@ const TableOrder = ({data , setdata}) => {
             onOk: async () => {
                 // callapi xóa
                 try {
-                    const response = await fetch(`http://localhost:8080/BE_PRINTER/api/v1/orders/${id}`, {
+                    const response = await fetch(`http://localhost:8080/BE_PrinterShop/api/v1/orders/${id}`, {
                         method: "DELETE"
                     })
                     if (!response.ok) {
@@ -116,8 +116,6 @@ const TableOrder = ({data , setdata}) => {
                         </Table>
                       
                     </div>
-
-                  
                 )}
                 
       {/* <EditForm product={selectedProduct} onClose={handleOnClose} visible={visible}  /> */}

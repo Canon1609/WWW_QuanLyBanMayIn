@@ -6,26 +6,45 @@ import cannon from "../../../assets/images/brand/canon.png"
 import epson from "../../../assets/images/brand/epson.png"
 import hprt from "../../../assets/images/brand/hprt.png"
 import brother from "../../../assets/images/brand/brother.png"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "antd/es/typography/Link";
 import Product from "../../../components/user/Products";
 import ProductItem from "../../../components/user/ProductItem";
 import SliderProduct from "../../../components/user/SliderProduct";
 
 const Shop = () => {
+    useEffect(()=>{
+        const productList = async () => {
+            try {
+                const response = await fetch('http://localhost:8080/BE_PrinterShop/api/v1/products');
+                if (!response.ok) {
+                    throw new Error('Something went wrong');
+                }
+                const result = await response.json();
+                setProducts(result.data);
+                localStorage.setItem('products', JSON.stringify(result.data));
+            } catch (error) {
+                console.log(error.message);
+                
+            }
+        }
+
+              productList();
+    },[])
     const [priceRange, setPriceRange] = useState([0, 10000000]);
     const [brand, setBrand] = useState([]);
     const [ram, setRam] = useState([]);
     const [sizePage  , setSizePage] = useState([]);
     const [products, setProducts] = useState(
-        localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : []
+        JSON.parse(localStorage.getItem('products')) || []
     );
     const [sorted , setSorted] = useState(products);
     const [sortOder , setSortOrder] = useState('asc');
     const [isSort, setIsSort] = useState(false);
-
+    const [filteredProducts, setFilteredProducts] = useState([]);
     // hàm sắp xếp sản phẩm
     const handleChange  = (value) => {
+        setIsSort(true);
         setSortOrder(value);
         let sortedProducts = [...products];
         // sắp xếp lại danh sách sản phẩm theo giá
@@ -34,15 +53,26 @@ const Shop = () => {
             // Sắp xếp theo giá tăng dần
             sortedProducts = sortedProducts.sort((a, b) => a.price - b.price);
         }
+        else if(value === 'best-seller'){
+            // sắp xếp theo sản phẩm bán chạy nhất là inStock thấp nhất tới nhiều nhất và lấy 5 sản phẩm đầu tiên
+            sortedProducts = sortedProducts.sort((a, b) => b.inStock - a.inStock);
+            sortedProducts = sortedProducts.slice(0, 5);
+        }
         else{
-            //sắp xếp theo giá giảm dần
+            //sắp xếp theo giá giảm dần 
             sortedProducts = sortedProducts.sort((a, b) => b.price - a.price);
         }
+      
         setSorted(sortedProducts);
     }
-    const productsSlice = products.slice(0, 10);
-    
-    
+
+    const handleChangeBrand = (value) => {
+        setBrand(value);
+      
+    }
+
+
+
     const onSliderChange = (value) => {
         setPriceRange(value);
     };
@@ -140,7 +170,7 @@ const Shop = () => {
                                 <div className="checkbox">
                                     <Checkbox.Group
                                         value={brand}
-                                        onChange={(value) => setBrand(value)}
+                                        onChange={(value)=>handleChangeBrand(value)}
                                         options={options}
                                     ></Checkbox.Group>
                                 </div>
@@ -186,28 +216,27 @@ const Shop = () => {
                                 <h3>Chọn loại sản phẩm</h3>
                             </div>
                             <div className="best-product">
-                                <SliderProduct products = {productsSlice}></SliderProduct>
+                                    
                             </div>
                             <div className="sort">
                                 <p>sắp xếp theo</p>
                                 <ul style={{ display: 'flex' }}>
                                     <li onClick={()=>{handleChange('desc')}}>
-                                        <Link className="text-color">giá giảm dần</Link>
+                                        <Link className="text-color">GIÁ GIẢM DẦN</Link>
                                     </li>
                                     <li onClick={()=>{handleChange('asc')}} >
-                                        <Link className="text-color">giá tăng dần</Link>
+                                        <Link className="text-color">GIÁ TĂNG DẦN</Link>
                                     </li>
                                     <li onClick={()=>{handleChange('best-seller')}}>
-                                        <Link className="text-color">sản phẩm bán chạy nhất </Link>
+                                        <Link className="text-color">BÁN CHẠY NHẤT</Link>
                                     </li>
-                                    <li onClick={()=>{handleChange('newest')}}>
-                                        <Link className="text-color">sản phẩm mới nhất</Link>
-                                    </li>
+                                
                                 </ul>
                             </div>
 
                             <div className="product-list">
-                                <ProductItem sorts = {sorted}></ProductItem>
+                                {isSort ? <ProductItem sorts = {sorted}></ProductItem> : <ProductItem sorts = {products}></ProductItem>}
+                              
                             </div>
                         </div>
                     </Col>
