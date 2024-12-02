@@ -7,27 +7,27 @@ const { confirm } = Modal;
 const TableCategory = () => {
     const columns = [
         {
-            title: 'Category ID',
+            title: 'ID',
             dataIndex: 'id',
             key: 'id',
         },
         {
-            title: 'Category Name',
+            title: 'Tên loại sản phẩm',
             dataIndex: 'name',
             key: 'name',
         },
         {
-            title: 'Description',
+            title: 'Mô tả',
             dataIndex: 'description',
             key: 'description',
         },
         {
-            title: "Actions",
+            title: "Hành động",
             key: "actions",
             render: (_, record) => (
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <FaEdit onClick={() => { handleEdit(record.id) }} />
-                    <DeleteOutlined onClick={() => { showDeleteConfirm(record.id) }} />
+                    <FaEdit onClick={() => { handleEdit(record.id) }} style={{fontSize : 20}} />
+                    <DeleteOutlined onClick={() => { showDeleteConfirm(record.id) }}  style={{fontSize : 20}} />
                 </div>
             ),
         },
@@ -40,7 +40,7 @@ const TableCategory = () => {
     const fetchData = async () => {
         setLoading(true);
         // Call API here
-        const response = await fetch('http://localhost:8080/BE_PRINTER/api/v1/categories');
+        const response = await fetch('http://localhost:8080/BE_PrinterShop/api/v1/categories');
         if (response.ok) {
             const result = await response.json();
             setData(result || []);
@@ -66,7 +66,7 @@ const TableCategory = () => {
                 // callapi xóa
                 try {
                     
-                    const response = await fetch(`http://localhost:8080/BE_PRINTER/api/v1/categories/${id}`, {
+                    const response = await fetch(`http://localhost:8080/BE_PrinterShop/api/v1/categories/${id}`, {
                         method: "DELETE"
                     })
                     if (response.ok) {

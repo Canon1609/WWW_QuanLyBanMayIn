@@ -9,24 +9,21 @@ const Brand = () => {
     return(
         <>
             <div className="brand-top">
-            <h2 className="brand__title">TOP BRANDS</h2>
-            <Button style={{width : 100}} type="primary" className="brand__btn">View all</Button>
+            {/* <h2 className="brand__title">TOP BRANDS</h2> */}
             </div>
            
             <div className="brand">
-                <a>
+                
+                <a href="/shop">
                 <Image  src= {hp} preview = {false} />
                 </a>
-                <a>
+                <a href="/shop">
                 <Image  src= {cannon} preview = {false} />
                 </a>
-                <a>
+                <a href="/shop">
                 <Image  src= {epson} preview = {false} />
                 </a>
-                <a>
-                <Image  src= {hprt} preview = {false} />
-                </a>
-                <a>
+                <a href="/shop">
                 <Image  src= {brother} preview = {false} />
                 </a>
                 

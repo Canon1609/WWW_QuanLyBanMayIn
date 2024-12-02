@@ -10,7 +10,7 @@ const TableCustomer = () => {
     const { confirm } = Modal;
     const columns = [
         {
-            title: 'User ID',
+            title: 'ID',
             dataIndex: 'id',
             key: 'id',
         },
@@ -25,12 +25,12 @@ const TableCustomer = () => {
             key: 'password',
         },
         {
-            title: 'Phone',
+            title: 'Số điện thoại',
             dataIndex: 'phone',
             key: 'phone',
         },
         {
-            title: 'Shipping Address',
+            title: 'Địa chỉ nhận hàng',
             dataIndex: 'shippingAddress',
             key: 'shippingAddress',
         },
@@ -45,7 +45,7 @@ const TableCustomer = () => {
             key: 'role',
         },
         {
-            title: "Actions",
+            title: "Hành động",
             key: "actions",
             render: (_, record) => (
                 <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -64,11 +64,11 @@ const TableCustomer = () => {
 
         setLoading(true);
         // Call API từ server để lấy dữ liệu
-        const response = await fetch('http://localhost:8080/BE_PRINTER/api/v1/user');
+        const response = await fetch('http://localhost:8080/BE_PrinterShop/api/v1/user');
         if (response.ok) {
             const result = await response.json();
             setData(result || []);
-            localStorage.setItem('users', JSON.stringify(result));
+            // localStorage.setItem('users', JSON.stringify(result));
         }
         setLoading(false);
     }
@@ -91,7 +91,7 @@ const TableCustomer = () => {
                 // callapi xóa
                 try {
                     
-                    const response = await fetch(`http://localhost:8080/BE_PRINTER/api/v1/user/${id}`, {
+                    const response = await fetch(`http://localhost:8080/BE_PrinterShop/api/v1/user/${id}`, {
                         method: "DELETE"
                     })
                     if (response.ok) {

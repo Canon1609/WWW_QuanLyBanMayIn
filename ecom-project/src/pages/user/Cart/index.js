@@ -5,14 +5,32 @@ import './Cart.scss'; // Đảm bảo bạn có file CSS để chỉnh sửa th�
 import { useCart } from '../../../service/CartContext';
 import { calc } from 'antd/es/theme/internal';
 import { useNavigate } from 'react-router-dom';
+import { formatCurrency } from '../../../helper/convertMoney';
 
 const Cart = () => {
     const [visible, setVisible] = useState(false);
     const { cartItems, setCartItems, addToCart, updateQuantity, removeFromCart, getTotalPrice } = useCart()
     const navigate = useNavigate();
-    const products = JSON.parse(localStorage.getItem('products')) || [];
+    const [products, setProducts] = useState([]);
 
+    useEffect(()=>{
+        const productList = async () => {
+            try {
+                const response = await fetch('http://localhost:8080/BE_PrinterShop/api/v1/products');
+                if (!response.ok) {
+                    throw new Error('Something went wrong');
+                }
+                const result = await response.json();
+                setProducts(result.data);
+            } catch (error) {
+                console.log(error.message);
+                
+            }
+        }
 
+              productList();
+    },[])
+    
     // Hiển thị Drawer
     const showDrawer = () => {
         setVisible(true);
@@ -30,13 +48,13 @@ const Cart = () => {
     return (
         <>
             {/* Icon giỏ hàng với hiệu ứng badge */}
-            <Badge count={cartItems.length} overflowCount={99} offset={[0, 0]} style={{ backgroundColor: '#ff4d4f', color: 'white' }}>
+          
+            <Badge count={cartItems.length} overflowCount={99} offset={[15, 0]} style={{ backgroundColor: "blueviolet", color: 'white' }}>
                 <FaCartShopping onClick={showDrawer} style={{ fontSize: 35, cursor: 'pointer', color: '#333' }} />
             </Badge>
-
             {/* Drawer giỏ hàng */}
             <Drawer
-                title="Your Cart"
+                title="Giỏ hàng của bạn"
                 placement="right"
                 onClose={onClose}
                 visible={visible}
@@ -44,7 +62,7 @@ const Cart = () => {
                 footer={
                     <div style={{display : 'flex' , justifyContent : 'center' }}>
                         <Button type="primary" block style={{ width: 200, padding: 20 }} onClick={handleCheckout}>
-                            Checkout
+                             Thanh Toán
                         </Button>
                     </div>
 
@@ -54,12 +72,13 @@ const Cart = () => {
                 <List
                     dataSource={cartItems}
                     
-                    renderItem={(item) => (        
+                    renderItem={(item) => (      
+                                         
                         <List.Item style={{ padding: '12px 0', borderBottom: '1px solid #f0f0f0' }}>
                             <div style={{ display: 'flex', width: '100%' }}>
                                 {/* Hình ảnh sản phẩm */}
                                 <div style={{ width: 150, height: 100, aspectRatio: 1 }}>
-                                    <Image preview={false} style={{ width: '100%', height: '100%', objectFit: 'contain' }} src={"https://huyyyy.sirv.com/Images/D%C3%B2ng%20m%C3%A1y%20in%20ph%C3%B9%20h%E1%BB%A3p%20cho%20gi%E1%BA%A5y%20in%20%E1%BA%A3nh%201(1).jpg"} width={80} height={80} />
+                                    <Image preview={false} style={{ width: '100%', height: '100%', objectFit: 'contain' }} src={products.find((pro) => pro.id === item.id).img } width={80} height={80} />
 
                                 </div>
 
@@ -68,7 +87,8 @@ const Cart = () => {
                                     <Typography.Text strong>{item.name}</Typography.Text>
                                     <br />
                                     <Typography.Text type="secondary" style={{ fontSize: '14px' }}>
-                                        ${item.price}
+                                        {formatCurrency(item.price)}
+                                       
                                     </Typography.Text>
                                 </div>
 
@@ -82,7 +102,8 @@ const Cart = () => {
                                         style={{ marginBottom: 8 }}
                                     />
                                     <Typography.Text strong style={{ color: '#1890ff' }}>
-                                        ${item.quantity * item.price}
+                                        {formatCurrency(item.quantity * item.price)}
+                                     
                                     </Typography.Text>
                                 </div>
                             </div>
@@ -93,8 +114,8 @@ const Cart = () => {
                 {/* Tổng giá */}
                 <Divider />
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '16px', fontWeight: 'bold' }}>
-                    <Typography.Text>Total Price:</Typography.Text>
-                    <Typography.Text>${getTotalPrice().toFixed(2)}</Typography.Text>
+                    <Typography.Text>Tổng tiền :</Typography.Text>
+                    <Typography.Text>{formatCurrency(getTotalPrice())}</Typography.Text>
                 </div>
             </Drawer>
         </>

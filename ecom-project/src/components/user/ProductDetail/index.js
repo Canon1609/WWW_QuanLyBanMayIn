@@ -15,7 +15,7 @@ const ProductDetail = () => {
     const fetchProductDetail = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8080/BE_PRINTER/api/v1/products/${id}`
+          `http://localhost:8080/BE_PrinterShop/api/v1/products/${id}`
         );
         const result = await response.json();
         setProduct(result.data);

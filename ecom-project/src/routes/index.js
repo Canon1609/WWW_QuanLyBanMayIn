@@ -12,6 +12,11 @@ import Login from "../pages/auth/Login";
 import ProductDetail from "../components/user/ProductDetail";
 import Checkout from "../pages/checkout";
 import Customer from "../pages/admin/Customer";
+import Order from "../pages/admin/Order";
+import Shop from "../pages/user/Shop";
+import ContactPage from "../pages/user/Contact";
+import Profile from "../pages/user/Profile";
+import Coupon from "../pages/admin/Coupon";
 export const routes = [
     {
         path : "/admin",
@@ -41,6 +46,18 @@ export const routes = [
                 ),
             },
             {
+                path : "/admin/order",
+                element: (
+                    <PrivateRoute rolesAllowed={["admin"]} element={<Order />} />
+                ),
+            },
+            {
+                path : "admin/coupons",
+                element: (
+                    <PrivateRoute rolesAllowed={["admin"]} element={<Coupon />} />
+                ),
+            },
+            {
                 path: "*",
                 element: <Page404 />
                 
@@ -48,20 +65,6 @@ export const routes = [
         ]
     },
 
-    // {
-    //     path : "/user",
-    //     element : <PrivateRoute rolesAllowed={["user"]} element={<Layouts></Layouts>} ></PrivateRoute>,
-    // },
-    // {
-    //     path : "/login",
-    //     element : <Login/>,
-    //     chidren :[
-    //         {
-    //             path : "/login",
-    //             element : <Login/>
-    //         }
-    //     ]
-    // }
         {
         path : "/",
         element : <Layouts/>,
@@ -81,7 +84,20 @@ export const routes = [
             {
                 path : 'checkout',
                 element : <Checkout></Checkout>
+            },
+            {
+                path : 'shop',
+                element : <Shop/>
+            },
+            {
+                path : "contact",
+                element : <ContactPage/>
+            },
+            {
+                path : "profile",
+                element : <Profile/>
             }
+            
         ]
     }
 ]

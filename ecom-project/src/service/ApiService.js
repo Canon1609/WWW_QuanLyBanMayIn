@@ -28,6 +28,6 @@ export const GetTokenSirv = async () => {
     })
     if (response.ok) {
         const result = await response.json();
-        return result;
+        return result.token;
     }
 }

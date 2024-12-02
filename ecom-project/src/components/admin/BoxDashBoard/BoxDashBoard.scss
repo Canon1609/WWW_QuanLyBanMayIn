@@ -1,7 +1,9 @@
 .card{
     background-color: green;
-    color: #fff ;
-    height: 225px;
+    color: hsl(0, 0%, 100%) ;
+    height: auto;
+    padding: 20px;
+    text-align: center;
     &__title{
         font-size: 22px;
         font-weight: 600;

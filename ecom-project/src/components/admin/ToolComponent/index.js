@@ -8,10 +8,10 @@ const ToolComponent = ()=>{
     return(
         <>
            <div className="tool mt-10 pd-10">
-           <Input placeholder="Search Product" className="tool__input"></Input>
+           <Input placeholder="Nhập tên , loại sản phẩm ..." className="tool__input"></Input>
           <Select 
            showSearch
-           placeholder = "category"
+           placeholder = "Loại máy in"
            style={{width: "200px"}}
            
           options={[
@@ -23,13 +23,11 @@ const ToolComponent = ()=>{
               value: '2',
               label: 'máy in laser',
             },
-            {
-              value: '3',
-              label: 'máy in kim',
-            },
+          
           ]}
           className="tool__category"></Select>
           <Select
+            // onSelect={handleChange}
            showSearch
            placeholder = "price"
            style={{width: "200px"}}
@@ -37,20 +35,17 @@ const ToolComponent = ()=>{
           options={[
             {
               value: '1',
-              label: 'low to hight',
+              label: 'thấp đến cao',
             },
             {
               value: '2',
-              label: 'hight to low',
+              label: 'cao đến thấp',
             },
-            {
-              value: '3',
-              label: 'selling',
-            },
+           
           ]}
           className="tool__price"></Select>
-          <Button type="primary" className="tool__filler">Filler</Button>
-          <Button type="primary" className="tool__reset">Reset</Button>
+          <Button type="primary" className="tool__filler">Lọc</Button>
+          <Button type="primary" className="tool__reset">Làm mới</Button>
         
            </div>
         

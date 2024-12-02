@@ -20,7 +20,7 @@ const AddCustomerForm = ({onClose , visible}) => {
         }
     
         try {
-          const response = await fetch(`http://localhost:8080/BE_PRINTER/api/v1/user/add`, {
+          const response = await fetch(`http://localhost:8080/BE_PrinterShop/api/v1/user/add`, {
             method: 'POST',
             headers: {
               "Content-Type": "application/json",

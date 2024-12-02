@@ -1,24 +1,34 @@
-import { Dropdown, Space } from "antd";
+import { Button, Dropdown, Space } from "antd";
 import { icons } from "antd/es/image/PreviewGroup";
 import "./UserDropDown.scss"
 import { FaLocationDot, FaCircleUser, FaCartShopping } from "react-icons/fa6";
 import { Link, Navigate, useNavigation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useCart } from "../../../service/CartContext";
-const UserDropDown = ({userName , onLogout}) => {
-  
-    const {cartItems} = useCart();
-    useEffect(()=>{
-    
-    },[])
- 
+import { FaRegUser } from "react-icons/fa";
+import { IoCartOutline } from "react-icons/io5";
+import { CiBellOn } from "react-icons/ci";
+const UserDropDown = ({ userName, onLogout }) => {
+
+    const { cartItems } = useCart();
+    useEffect(() => {
+
+    }, [])
+
     const items = [
         {
             key: 1,
-            class : 'key1',
+            class: 'key1',
             label: (
                 <>
-                    <p>{userName}</p>
+                    <div style={{display : 'flex'}}>
+                        <FaRegUser />
+                        <Link style={{color : 'black'}} to="/profile">Thông tin tài khoản</Link>
+                        
+                      
+                    </div>
+
+
                 </>
             ),
             icons: <FaCircleUser />
@@ -27,7 +37,10 @@ const UserDropDown = ({userName , onLogout}) => {
             key: 2,
             label: (
                 <>
-                    <p>Thông tin</p>
+                  <div style={{display : 'flex'}}>
+                        <IoCartOutline />
+                        <p>Quản lí đơn hàng</p>
+                    </div>
                 </>
             )
         },
@@ -35,7 +48,21 @@ const UserDropDown = ({userName , onLogout}) => {
             key: 3,
             label: (
                 <>
-                     <Link to={"/"} onClick={onLogout}>Sign Out</Link>
+                  <div style={{display : 'flex'}}>
+                        <CiBellOn />
+                        <p>Thông báo</p>
+                    </div>
+                </>
+            )
+        },
+        {
+            key: 4,
+            label: (
+                <>
+                <Button style={{width : '100%'}}>
+                <Link to={"/"} onClick={onLogout}>Đăng xuất</Link>
+                </Button>
+                    
                 </>
             )
         },
@@ -45,14 +72,14 @@ const UserDropDown = ({userName , onLogout}) => {
             <Dropdown
                 menu={{ items }}
                 placement="bottomRight"
-                overlayClassName = 'userDropDown'
+                overlayClassName='userDropDown'
             >
                 <a onClick={(e) => e.preventDefault()}>
                     <Space>
                         <div className="useravt">
-                        <FaCircleUser />
+                            <FaCircleUser />
                         </div>
-                       
+
                     </Space>
                 </a>
 

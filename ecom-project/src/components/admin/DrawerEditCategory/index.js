@@ -15,7 +15,7 @@ const EditForm = ({ category, onClose, visible, onSuccess }) => {
         try {
             setLoading(true);
             const values = await form.validateFields();
-            const response = await fetch(`http://localhost:8080/BE_PRINTER/api/v1/categories/${values.id}`, {
+            const response = await fetch(`http://localhost:8080/BE_PrinterShop/api/v1/categories/${values.id}`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",
